@@ -10,24 +10,27 @@ public class Greeted{
 
 
     public void greetUser(String userName, String language){
+
         if(!greetMap.containsKey(userName)){
             greetMap.put(userName, 1);
 
-        } else {
+        }
+        else {
             int greetCounter = greetMap.get(userName);
             greetCounter++;
             greetMap.put(userName, greetCounter);
+
         }
 
     }
 
 
     public int totalGreeted(){
-//        int totalGreeted = 0;
-//
-//        for(Integer greetCounter: greetMap.values()){
-//            totalGreeted += greetCounter;
-//        }
+        int totalGreeted = 0;
+
+        for(Integer greetCounter: greetMap.values()){
+            totalGreeted += greetCounter;
+        }
         return greetMap.size();
     }
 

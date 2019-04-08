@@ -28,12 +28,13 @@ public class Greet {
                 String language = command[2].toUpperCase();
                 Languages.valueOf(language).getGreets(command[1]);
                 System.out.println(Languages.valueOf(language).getGreets(command[1])); //enums with values
+                System.out.println(greeter.totalGreeted());
 
             } else if (command[0].equals("greeted")) {
                 System.out.println(greeter.greeted());
             }
-            else System.out.println("invalid");
 
+            else System.out.println("invalid");
 
         }
 
