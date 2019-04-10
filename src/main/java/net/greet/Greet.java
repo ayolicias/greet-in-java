@@ -33,7 +33,7 @@ public class Greet {
                     System.out.println(Languages.valueOf(language).getGreets(command[1]));
                     greeter.greetUser(command[1], language);
 
-                    System.out.println(greeter.totalGreeted(command[1]));
+                    System.out.println(greeter.totalGreeted());
 
                 } catch (ArrayIndexOutOfBoundsException e) {
                     String language = "TSWANA";

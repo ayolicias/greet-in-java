@@ -23,29 +23,16 @@ public class Greeted{
 
         }
 
-
     }
 
-    public int totalGreeted( String s ){
-        int totalGreeted = 1;
+    public int totalGreeted( ){
 
-//        int command = 1;
-
-//        if (command[1].equals("greet")) {
-//
-//        }
-
-        for(Integer greetCounter: greetMap.values()){
-            totalGreeted += greetCounter;
-        }
         return greetMap.size();
     }
-
 
     public Map< String, Integer > greeted() {
         return greetMap;
     }
-
 
     public void reset(){
       System.out.println("reset names");
@@ -65,7 +52,11 @@ public class Greeted{
 
     }
 
+    public void getGreets( ) {
+        this.greeted();
+    }
 }
+
 
 
 
