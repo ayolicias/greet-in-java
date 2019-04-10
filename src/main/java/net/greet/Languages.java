@@ -8,19 +8,14 @@ public enum Languages {
 
     ENGLISH ("Hello "),
     ISIXHOSA ("Molo "),
-    AFRIKAANS("Geomore "),
-    ;
-
-//    public void greet(){
-//        this.greet();
-//    }
+    TSWANA("Dumela "),
+    AFRIKAANS("Geomore ");
 
     private  final String greets;
 
     Languages( String greets ) {
-        this.greets= greets;
+        this.greets = greets;
     }
-
 
     public String getGreets( String userName ){
         return greets + userName;

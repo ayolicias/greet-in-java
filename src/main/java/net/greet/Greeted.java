@@ -6,13 +6,14 @@ import java.util.Map;
 
 public class Greeted{
 
-    Map< String, Integer> greetMap = new HashMap<>();
+    Map< String, Integer> greetMap = new HashMap<String, Integer>();
+    private  int greetCounter =1;
 
 
     public void greetUser(String userName, String language){
 
         if(!greetMap.containsKey(userName)){
-            greetMap.put(userName, 1);
+            greetMap.put(userName, greetCounter);
 
         }
         else {
@@ -22,11 +23,17 @@ public class Greeted{
 
         }
 
+
     }
 
+    public int totalGreeted( String s ){
+        int totalGreeted = 1;
 
-    public int totalGreeted(){
-        int totalGreeted = 0;
+//        int command = 1;
+
+//        if (command[1].equals("greet")) {
+//
+//        }
 
         for(Integer greetCounter: greetMap.values()){
             totalGreeted += greetCounter;
@@ -34,9 +41,30 @@ public class Greeted{
         return greetMap.size();
     }
 
+
     public Map< String, Integer > greeted() {
         return greetMap;
     }
+
+
+    public void reset(){
+      System.out.println("reset names");
+        greetMap.clear();
+
+    }
+    public void remove(String userName){
+
+        if (greetMap.containsKey(userName)){
+            greetMap.remove(userName);
+            System.out.println("cleared " + userName);
+        }
+        else{
+            System.out.println("name is not in the list");
+
+        }
+
+    }
+
 }
 
 

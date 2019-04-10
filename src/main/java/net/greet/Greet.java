@@ -1,10 +1,12 @@
 package net.greet;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Greet {
-    String Name;
-    String Language;
+    public String Name;
+    public String Language;
 
     public static void main( String[] args ) {
 
@@ -14,7 +16,7 @@ public class Greet {
         boolean exit = true;
 
         while (exit) {
-            System.out.println("Enter command"); //discriptive name
+            System.out.println("Enter command");
 
             String input = scanner.nextLine();
 
@@ -25,13 +27,32 @@ public class Greet {
             }
 
             if (command[0].equals("greet")) {
-                String language = command[2].toUpperCase();
-                Languages.valueOf(language).getGreets(command[1]);
-                System.out.println(Languages.valueOf(language).getGreets(command[1])); //enums with values
-                System.out.println(greeter.totalGreeted());
+                try {
+                    String language = command[2].toUpperCase();
+                    Languages.valueOf(language).getGreets(command[1]);
+                    System.out.println(Languages.valueOf(language).getGreets(command[1]));
+                    greeter.greetUser(command[1], language);
+
+                    System.out.println(greeter.totalGreeted(command[1]));
+
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    String language = "TSWANA";
+                    Languages.valueOf(language).getGreets(command[1]);
+
+                    System.out.println(Languages.valueOf(language).getGreets(command[1]));
+                    greeter.greetUser(command[1], language);
+                }
 
             } else if (command[0].equals("greeted")) {
                 System.out.println(greeter.greeted());
+
+            } else if (command[0].equals("reset")) {
+                greeter.reset();
+
+            }
+            else if (command[0].equals("clear")){
+                greeter.remove(command[1]);
+
             }
 
             else System.out.println("invalid");
@@ -40,5 +61,7 @@ public class Greet {
 
     }
 }
+
+
 
 
