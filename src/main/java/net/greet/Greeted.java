@@ -44,17 +44,20 @@ public class Greeted{
         if (greetMap.containsKey(userName)){
             greetMap.remove(userName);
             System.out.println("cleared " + userName);
+
+             this.remove(userName);
+
         }
         else{
             System.out.println("name is not in the list");
 
         }
-
     }
 
-    public void getGreets( ) {
-        this.greeted();
-    }
+//    public void getGreets( )
+//    {
+//        this.greeted();
+//    }
 }
 
 

@@ -25,19 +25,31 @@ class GreetedTest {
         greeted.greetUser("Yamkela", "Zulu");
         greeted.greetUser("Yamkela", "Zulu");
 
-        assertEquals(greeted.greeted().toString(),"{Yamkela=3}");
+        greeted.greetUser("zee", "English");
+        greeted.greetUser("zee", "English");
+
+        greeted.greetUser("Aya","Isixhosa");
+
+        assertEquals(greeted.greeted().toString(),"{Yamkela=3, Aya=1, zee=2}");
+    }
+
+    @Test
+    public void shouldResetUser(){
+        Greeted greeted = new Greeted();
+        greeted.greetUser("Aya","Isixhosa");
+        greeted.reset();
+        assertEquals(greeted.greeted().toString(),"{}");
 
     }
 
-//    @Test
-//    public void shouldclearuser(){
-//
-//        Greeted greeted = new Greeted();
-//
-//        Greeted.greetUser("zee", "Isixhosa");
-//        assertEquals(greeted.reset().to,"{zee=1}");
-//
-//
-//    }
+    @Test
+    public void shouldClear(){
+        Greeted greeted = new Greeted();
+        greeted.greetUser("zee", "English");
+        greeted.remove("zee");
+
+        assertEquals(greeted.greeted().toString(),"{}");
+
+    }
 
 }
