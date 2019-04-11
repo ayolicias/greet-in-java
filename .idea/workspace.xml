@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6853ed2d-8c44-45ce-a092-fd60b695f0c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/Greet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/Greet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/Greeted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/Greeted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/Languages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/Languages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/greet/GreetedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/greet/GreetedTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/Greet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/Greet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/Greeted.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/Greeted.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/net/greet/GreetedTest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/net/greet/greetUserTest.class" beforeDir="false" />
-    </list>
+    <list default="true" id="6853ed2d-8c44-45ce-a092-fd60b695f0c6" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/net/greet/GreetedTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="51" column="8" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+            <state relative-caret-position="801">
+              <caret line="54" column="1" lean-forward="true" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -214,7 +203,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.GreetedTest.shouldResetUser">
+  <component name="RunManager" selected="JUnit.GreetedTest">
     <configuration name="Greet" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="net.greet.Greet" />
       <module name="greet-in-java" />
@@ -224,6 +213,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GreetedTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="greet-in-java" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="net.greet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="net.greet" />
+      <option name="MAIN_CLASS_NAME" value="net.greet.GreetedTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -239,22 +243,6 @@
       <option name="PACKAGE_NAME" value="net.greet" />
       <option name="MAIN_CLASS_NAME" value="net.greet.GreetedTest" />
       <option name="METHOD_NAME" value="shouldClear" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GreetedTest.shouldClearNames" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="greet-in-java" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="net.greet.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="net.greet" />
-      <option name="MAIN_CLASS_NAME" value="net.greet.GreetedTest" />
-      <option name="METHOD_NAME" value="shouldClearNames" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -294,11 +282,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GreetedTest" />
         <item itemvalue="JUnit.GreetedTest.shouldResetUser" />
         <item itemvalue="JUnit.GreetedTest.shouldClear" />
         <item itemvalue="Application.Greet" />
         <item itemvalue="JUnit.GreetedTest.shouldgetCount (1)" />
-        <item itemvalue="JUnit.GreetedTest.shouldClearNames" />
       </list>
     </recent_temporary>
   </component>
@@ -316,9 +304,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GreetedTest_shouldClear - 2019.04.11 at 14h 53m 02s.xml">
-      <configuration name="GreetedTest.shouldClear" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GreetedTest_shouldClear - 2019.04.11 at 14h 57m 35s.xml">
       <configuration name="GreetedTest.shouldClear" configurationId="JUnit" />
     </history-entry>
@@ -346,6 +331,9 @@
     <history-entry file="GreetedTest_shouldClear - 2019.04.11 at 15h 28m 25s.xml">
       <configuration name="GreetedTest.shouldClear" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="GreetedTest_shouldResetUser - 2019.04.11 at 15h 39m 21s.xml">
+      <configuration name="GreetedTest.shouldResetUser" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
@@ -358,12 +346,12 @@
       <window_info id="Image Layers" order="4" />
       <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.30407023" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.35993487" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.36970684" />
       <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.5217391" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" visible="true" weight="0.45439738" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.50325733" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.39739415" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
@@ -504,8 +492,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/net/greet/GreetedTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="51" column="8" lean-forward="true" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
+        <state relative-caret-position="801">
+          <caret line="54" column="1" lean-forward="true" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
