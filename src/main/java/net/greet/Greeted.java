@@ -39,7 +39,8 @@ public class Greeted{
         greetMap.clear();
 
     }
-    public void remove(String userName){
+
+    public String remove(String userName){
 
         if (greetMap.containsKey(userName)){
             greetMap.remove(userName);
@@ -48,17 +49,10 @@ public class Greeted{
              this.remove(userName);
 
         }
-        else{
-            System.out.println("name is not in the list");
+        return userName + " is not in the list";
 
-        }
     }
-
-//    public void getGreets( )
-//    {
-//        this.greeted();
-//    }
-}
+    }
 
 
 

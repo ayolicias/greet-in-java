@@ -39,16 +39,16 @@ class GreetedTest {
         greeted.greetUser("Aya","Isixhosa");
         greeted.reset();
         assertEquals(greeted.greeted().toString(),"{}");
-
     }
 
     @Test
-    public void shouldClear(){
+    public void shouldClearName(){
         Greeted greeted = new Greeted();
         greeted.greetUser("zee", "English");
-        greeted.remove("zee");
+        greeted.greetUser("ze", "English");
+        System.out.println(greeted.remove("guygi"));
 
-        assertEquals(greeted.greeted().toString(),"{}");
+        assertEquals(greeted.greeted().toString(),"{zee=1, ze=1}");
 
     }
 
