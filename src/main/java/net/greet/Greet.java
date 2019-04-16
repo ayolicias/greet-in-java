@@ -7,6 +7,8 @@ public class Greet {
     public String Language;
 
     public static void main( String[] args ) {
+        GreetedUser greetedUser = new JdbcGreeted();
+
 
         Greeted greeter = new Greeted();
         Scanner scanner = new Scanner(System.in);
