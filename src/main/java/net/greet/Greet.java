@@ -7,10 +7,19 @@ public class Greet {
     public String Language;
 
     public static void main( String[] args ) {
-        GreetedUser greetedUser = new JdbcGreeted();
+//        GreetedUser greetedUser = new JdbcGreetedUser() {
+//
+//            @Override
+//            public void greetUser( ) {
+//
+//            }
+//
+//        };
 
 
-        Greeted greeter = new Greeted();
+//        Greeted greeter = new Greeted();
+        JdbcGreetedUser greeter = new JdbcGreetedUser();
+
         Scanner scanner = new Scanner(System.in);
 
         boolean exit = true;
@@ -33,7 +42,7 @@ public class Greet {
                     System.out.println(Languages.valueOf(language).getGreets(command[1]));
                     greeter.greetUser(command[1], language);
 
-                    System.out.println(greeter.totalGreeted());
+//                    System.out.println(greeter.totalGreeted());
 
                 } catch (ArrayIndexOutOfBoundsException e) {
                     String language = "TSWANA";

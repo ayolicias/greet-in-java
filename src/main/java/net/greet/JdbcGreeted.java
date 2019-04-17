@@ -1,29 +1,27 @@
 package net.greet;
 import java.sql.*;
-import java.util.Map;;
-import java.util.HashMap;
+import java.util.Map;
 
+ class JdbcGreetedUser implements GreetedUser{
 
-  abstract class JdbcGreetedUser implements GreetedUser{
-
-    final String INSERT_LANGUAGE_SQL = ("insert into greetedUsers (user_Name, greet_Counter)values (?,?)");
-    final String FIND_LANGUAGE_USERNAME_SQL = "select * greet_Count from greetedUser where greet_Count = ?";
-    final String UPDATE_LANGUAGE_USERNAME_SQL= "update greetedUsers set greet_Counter = ? where greet_Counter ";
+//    final String INSERT_GREETED_USERS = ("insert into greetedUsers (user_name, greet_counter)values (?,?)");
+//    final String FIND_GREET_COUNT = "select * greet_count from greetedUser where greet_count = ?";
+//    final String UPDATE_GREET_COUNT= "update greetedUsers set greet_counter = ? where greet_counter ";
 
     Connection conn;
     PreparedStatement psCreateNewUsers;
     PreparedStatement psFindGreetCounter;
     PreparedStatement psUpdateGreetCounter;
 
-
     public JdbcGreetedUser(){
 
         try {
 
             conn = DriverManager.getConnection("jdbc:h2:./target/greetings_db","sa","");
-            psCreateNewUsers = conn.prepareStatement(INSERT_LANGUAGE_SQL);
-            psFindGreetCounter = conn.prepareStatement(FIND_LANGUAGE_USERNAME_SQL);
-            psUpdateGreetCounter = conn.prepareStatement(UPDATE_LANGUAGE_USERNAME_SQL);
+            psCreateNewUsers = conn.prepareStatement("insert into greetedUsers(user_name,greet_count)values('ziya', 1)");
+
+//            psFindGreetCounter = conn.prepareStatement(FIND_GREET_COUNT);
+//            psUpdateGreetCounter = conn.prepareStatement(UPDATE_GREET_COUNT);
 
         }
 
@@ -31,7 +29,7 @@ import java.util.HashMap;
                 ex.printStackTrace();
         }
     }
-
+    @Override
     public void greetUser(String userName, String language){
 
         try{
@@ -59,23 +57,38 @@ import java.util.HashMap;
 
     }
 
+     @Override
+     public boolean greeted( ) {
+         return false;
+     }
 
-    public int totalGreeted() {
+     @Override
+     public void reset( ) {
+
+     }
+
+     @Override
+     public void remove( String s ) {
+
+     }
+
+     @Override
+        public int totalGreeted(int greet_Counter){
 
         try {
-//            psFindGreetCounter.setString();
-//            ResultSet rs = psFindGreetCounter.executeQuery();
-//
-//            if (rs.next());
-//
+            psFindGreetCounter.setInt(1, greet_Counter);
+            ResultSet rs = psFindGreetCounter.executeQuery();
+
+            if (rs.next());
+
 //            return rs.getInt(greet_Counter);
-
-            return greetMap.size();
-
-
-            public Map< String, Integer > greeted() {
-                return greetMap;
-            }
+//
+//            return greetMap.size();
+//
+//
+//            public Map< String, Integer > greeted() {
+//                return greetMap;
+//            }
         }
 
 

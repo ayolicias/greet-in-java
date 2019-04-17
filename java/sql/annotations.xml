@@ -1,0 +1,5 @@
+<root>
+    <item name='java.sql.Statement void addBatch(java.lang.String)'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>
