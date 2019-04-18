@@ -4,9 +4,9 @@ import java.util.Map;
 
  class JdbcGreetedUser implements GreetedUser{
 
-//    final String INSERT_GREETED_USERS = ("insert into greetedUsers (user_name, greet_counter)values (?,?)");
-//    final String FIND_GREET_COUNT = "select * greet_count from greetedUser where greet_count = ?";
-//    final String UPDATE_GREET_COUNT= "update greetedUsers set greet_counter = ? where greet_counter ";
+    final String INSERT_GREETED_USERS = ("insert into greetedUsers (user_name, greet_counter)values (?,?)");
+    final String GREET_COUNT = "select * greet_count from greetedUser where greet_count = ?";
+    final String UPDATE_GREET_COUNT= "update greetedUsers set greet_counter = ? where greet_counter ";
 
     Connection conn;
     PreparedStatement psCreateNewUsers;
@@ -18,10 +18,9 @@ import java.util.Map;
         try {
 
             conn = DriverManager.getConnection("jdbc:h2:./target/greetings_db","sa","");
-            psCreateNewUsers = conn.prepareStatement("insert into greetedUsers(user_name,greet_count)values('ziya', 1)");
-
-//            psFindGreetCounter = conn.prepareStatement(FIND_GREET_COUNT);
-//            psUpdateGreetCounter = conn.prepareStatement(UPDATE_GREET_COUNT);
+            psCreateNewUsers = conn.prepareStatement(INSERT_GREETED_USERS);
+            psFindGreetCounter = conn.prepareStatement(GREET_COUNT);
+            psUpdateGreetCounter = conn.prepareStatement(UPDATE_GREET_COUNT);
 
         }
 

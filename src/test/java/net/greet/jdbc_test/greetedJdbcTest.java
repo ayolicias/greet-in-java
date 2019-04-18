@@ -68,8 +68,25 @@ public class greetedJdbcTest {
             ResultSet rs = statement.executeQuery("select * from  greetedUsers");
         }
         catch (Exception e){
-            System.out.println("Select users from database");
+            System.out.println("Select users from databaseUsers");
         }
 
     }
+    @Test
+    public void AddUsersViaMigration(){
+        try{
+            Connection conn = getConnection();
+            Statement statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery ("select greet_count(*) as greet_count from greetedUsers");
+
+            if (rs.next()) {
+                //count users
+                assertEquals(3, rs.getInt("greet_count"));
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }
