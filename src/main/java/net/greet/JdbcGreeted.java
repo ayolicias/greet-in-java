@@ -41,18 +41,18 @@ class JdbcGreetedUser implements GreetedUser{
 
     final String DELETE_NAMES_SQL = "delete from users";
 
-    PreparedStatement insertDB;
-    PreparedStatement findCounter;
-    PreparedStatement updateCounter;
-    PreparedStatement deleteAll;
+    PreparedStatement psCreateNewinsertDB;
+    PreparedStatement psfindCounter;
+    PreparedStatement psupdateCounter;
+    PreparedStatement psdeleteAll;
 
 
 
     public JdbcGreetedUser() throws SQLException {
-        insertDB = conn.prepareStatement(INSERT_USERS_SQL);
-        findCounter = conn.prepareStatement(FIND_COUNTER_SQL);
-        updateCounter = conn.prepareStatement(UPDATE_USERS_NAME_GREET_COUNT);
-        deleteAll = conn.prepareStatement(DELETE_NAMES_SQL);
+        psCreateNewinsertDB = conn.prepareStatement(INSERT_USERS_SQL);
+        psfindCounter = conn.prepareStatement(FIND_COUNTER_SQL);
+        psupdateCounter = conn.prepareStatement(UPDATE_USERS_NAME_GREET_COUNT);
+        psdeleteAll = conn.prepareStatement(DELETE_NAMES_SQL);
 
     }
 
@@ -60,24 +60,24 @@ class JdbcGreetedUser implements GreetedUser{
     public void greetUser(String userName, String language){
 
         try{
-            insertDB.setString(1, userName);
+            psCreateNewinsertDB.setString(1, userName);
 
-            ResultSet rs = findCounter.executeQuery();
+            ResultSet rs = psfindCounter.executeQuery();
 
             if (!rs.next()){
 
-                insertDB.setString(1, userName.toString());
-                insertDB.setInt(2,1);
-                insertDB.execute();
+                psCreateNewinsertDB.setString(1, userName.toString());
+                psCreateNewinsertDB.setInt(2,1);
+                psCreateNewinsertDB.execute();
 
             }
 
             else{
               int greetCounter = rs.getInt("greetcounter");
 
-                updateCounter.setInt( 1, ++greetCounter);
-                updateCounter.setString( 1, userName);
-                updateCounter.execute();
+                psupdateCounter.setInt( 1, ++greetCounter);
+                psupdateCounter.setString( 1, userName);
+                psupdateCounter.execute();
 
             }
 
@@ -108,9 +108,9 @@ class JdbcGreetedUser implements GreetedUser{
         public int totalGreeted(String userName){
 
         try {
-            findCounter.setString(1, userName );
+            psfindCounter.setString(1, userName );
 
-            ResultSet rs = findCounter.executeQuery();
+            ResultSet rs = psfindCounter.executeQuery();
 
             if (rs.next());
 
