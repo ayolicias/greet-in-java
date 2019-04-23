@@ -1,10 +1,13 @@
 package net.greet;
 
-public interface GreetedUser {
-    int totalGreeted( int greet_Counter );
-    void greetUser(String userName, String language);
+import java.sql.SQLException;
 
-    boolean greeted( );
+public interface GreetedUser {
+
+    void greetUser(String userName, String language);
+    int totalGreeted(String userName);
+
+    int greeted( );
 
     void reset( );
 

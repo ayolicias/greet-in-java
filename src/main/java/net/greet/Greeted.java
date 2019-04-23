@@ -25,10 +25,11 @@ public class Greeted{
 
     }
 
-    public int totalGreeted( ){
+    public int totalGreeted(){
 
         return greetMap.size();
     }
+
 
     public Map< String, Integer > greeted() {
         return greetMap;
@@ -52,7 +53,9 @@ public class Greeted{
         return userName + " is not in the list";
 
     }
-    }
+
+
+}
 
 
 

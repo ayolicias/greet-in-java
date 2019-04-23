@@ -2,49 +2,82 @@ package net.greet;
 import java.sql.*;
 import java.util.Map;
 
- class JdbcGreetedUser implements GreetedUser{
+import static java.lang.Class.forName;
 
-    final String INSERT_GREETED_USERS = ("insert into greetedUsers (user_name, greet_counter)values (?,?)");
-    final String GREET_COUNT = "select * greet_count from greetedUser where greet_count = ?";
-    final String UPDATE_GREET_COUNT= "update greetedUsers set greet_counter = ? where greet_counter ";
+class JdbcGreetedUser implements GreetedUser{
 
-    Connection conn;
-    PreparedStatement psCreateNewUsers;
-    PreparedStatement psFindGreetCounter;
-    PreparedStatement psUpdateGreetCounter;
+     final String DATABASE_URL = "jdbc:h2:./target/greetings_db";
 
-    public JdbcGreetedUser(){
+    public void loadJdbcclass() {
 
         try {
 
-            conn = DriverManager.getConnection("jdbc:h2:./target/greetings_db","sa","");
-            psCreateNewUsers = conn.prepareStatement(INSERT_GREETED_USERS);
-            psFindGreetCounter = conn.prepareStatement(GREET_COUNT);
-            psUpdateGreetCounter = conn.prepareStatement(UPDATE_GREET_COUNT);
-
+            forName("org.h2.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
 
-        catch (SQLException ex){
-                ex.printStackTrace();
+    }
+
+    Connection conn;
+
+    {
+        try {
+
+            conn = DriverManager.getConnection("jdbc:h2:./target/greetings_db", "sa", "");
+
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         }
     }
+
+
+    final String INSERT_USERS_SQL = "insert into users (user_name, greet_counter)values (?,?)";
+
+    final String FIND_COUNTER_SQL = "select * greet_count from users where user_name = ?";
+
+    final String UPDATE_USERS_NAME_GREET_COUNT= "update users set greet_counter = ? where user_name ";
+
+    final String DELETE_NAMES_SQL = "delete from users";
+
+    PreparedStatement insertDB;
+    PreparedStatement findCounter;
+    PreparedStatement updateCounter;
+    PreparedStatement deleteAll;
+
+
+
+    public JdbcGreetedUser() throws SQLException {
+        insertDB = conn.prepareStatement(INSERT_USERS_SQL);
+        findCounter = conn.prepareStatement(FIND_COUNTER_SQL);
+        updateCounter = conn.prepareStatement(UPDATE_USERS_NAME_GREET_COUNT);
+        deleteAll = conn.prepareStatement(DELETE_NAMES_SQL);
+
+    }
+
     @Override
     public void greetUser(String userName, String language){
 
         try{
-            psFindGreetCounter.setString(1, userName.toString());
-            ResultSet rsuserName = psFindGreetCounter.executeQuery();
+            insertDB.setString(1, userName);
 
-            if (!rsuserName.next()){
-                psCreateNewUsers.setString(1, userName.toString());
-                psCreateNewUsers.setInt(2,1);
-                System.out.println(psCreateNewUsers.execute());
+            ResultSet rs = findCounter.executeQuery();
 
-            }else{
-              int greetCounter = rsuserName.getInt("greet_Counter");
-                psUpdateGreetCounter.setInt( 1, ++greetCounter);
-                psUpdateGreetCounter.setString(1, userName.toString());
-                psUpdateGreetCounter.execute();
+            if (!rs.next()){
+
+                insertDB.setString(1, userName.toString());
+                insertDB.setInt(2,1);
+                insertDB.execute();
+
+            }
+
+            else{
+              int greetCounter = rs.getInt("greetcounter");
+
+                updateCounter.setInt( 1, ++greetCounter);
+                updateCounter.setString( 1, userName);
+                updateCounter.execute();
 
             }
 
@@ -57,8 +90,8 @@ import java.util.Map;
     }
 
      @Override
-     public boolean greeted( ) {
-         return false;
+     public int greeted( ) {
+         return greeted();
      }
 
      @Override
@@ -72,32 +105,26 @@ import java.util.Map;
      }
 
      @Override
-        public int totalGreeted(int greet_Counter){
+        public int totalGreeted(String userName){
 
         try {
-            psFindGreetCounter.setInt(1, greet_Counter);
-            ResultSet rs = psFindGreetCounter.executeQuery();
+            findCounter.setString(1, userName );
+
+            ResultSet rs = findCounter.executeQuery();
 
             if (rs.next());
 
-//            return rs.getInt(greet_Counter);
-//
-//            return greetMap.size();
-//
-//
-//            public Map< String, Integer > greeted() {
-//                return greetMap;
-//            }
+
+            else {
+                System.out.println("user in in the database");
+            }
         }
-
-
-
 
         catch (SQLException ex){
             ex.printStackTrace();
         }
         return 0;
     }
-};
+}
 
 
