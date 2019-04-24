@@ -73,9 +73,9 @@ class JdbcGreetedUser implements GreetedUser{
             }
 
             else{
-              int greetCounter = rs.getInt("greetcounter");
+              int greetCounter = rs.getInt("greetcounter") + 1;
 
-                psupdateCounter.setInt( 1, ++greetCounter);
+                psupdateCounter.setInt( 1, greetCounter);
                 psupdateCounter.setString( 1, userName);
                 psupdateCounter.execute();
 
@@ -116,7 +116,7 @@ class JdbcGreetedUser implements GreetedUser{
 
 
             else {
-                System.out.println("user in in the database");
+                System.out.println("");
             }
         }
 
