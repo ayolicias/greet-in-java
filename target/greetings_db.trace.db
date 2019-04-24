@@ -19,3 +19,6 @@ insert into users (user_name, greet_counter)values (?,?) [42102-199]
 2019-04-23 14:24:09 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
 insert into users (user_name, greet_counter)values (?,?) [42102-199]
+2019-04-24 14:43:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found; SQL statement:
+insert into users (user_name, greet_counter)values (?,?) [42102-199]
