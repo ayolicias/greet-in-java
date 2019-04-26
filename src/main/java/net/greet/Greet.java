@@ -4,22 +4,13 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Greet {
-    public String Name;
-    public String Language;
+//    public String Name;
+//    public String Language;
 
     public static void main( String[] args ) throws SQLException {
-//        GreetedUser greetedUser = new JdbcGreetedUser() {
-//
-//            @Override
-//            public void greetUser( ) {
-//
-//            }
-//
-//        };
 
-
-//        Greeted greeter = new Greeted();
-        JdbcGreetedUser greeter = new JdbcGreetedUser();
+//        GreetedUser greeter = new Greeted();
+        GreetedUser greeter = new JdbcGreeted();
 
         Scanner scanner = new Scanner(System.in);
 

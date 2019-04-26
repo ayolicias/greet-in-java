@@ -1,15 +1,20 @@
 package net.greet;
 
-import java.sql.SQLException;
+import java.util.Map;
 
 public interface GreetedUser {
 
     void greetUser(String userName, String language);
     int totalGreeted(String userName);
+    void loadJdbcclass();
 
-    int greeted( );
+    String remove(String userName);
 
-    void reset( );
+    void reset();
 
-    void remove( String s );
-}
+    int greeted();
+    String findUser( String userName);
+    int getGreetCounter( );
+    void setGreetCounter( int greetCounter );
+
+    }

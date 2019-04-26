@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Greeted{
+public class Greeted implements GreetedUser{
 
     Map< String, Integer> greetMap = new HashMap<String, Integer>();
     private  int greetCounter =1;
@@ -25,19 +25,46 @@ public class Greeted{
 
     }
 
+    @Override
+    public int totalGreeted( String userName ) {
+        return 0;
+    }
+
+
     public int totalGreeted(){
 
         return greetMap.size();
     }
 
+    @Override
+    public void loadJdbcclass( ) {
 
-    public Map< String, Integer > greeted() {
-        return greetMap;
     }
 
     public void reset(){
       System.out.println("reset names");
         greetMap.clear();
+
+    }
+
+     @Override
+     public int greeted( ) {
+         return 0;
+     }
+
+    @Override
+    public String findUser( String userName ) {
+        return null;
+    }
+
+
+    @Override
+    public int getGreetCounter( ) {
+        return 0;
+    }
+
+    @Override
+    public void setGreetCounter( int greetCounter ) {
 
     }
 

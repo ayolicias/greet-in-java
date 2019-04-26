@@ -30,7 +30,7 @@ class GreetedTest {
 
         greeted.greetUser("Aya","Isixhosa");
 
-        assertEquals(greeted.greeted().toString(),"{Yamkela=3, Aya=1, zee=2}");
+        assertEquals(greeted.greeted(),"{Yamkela=3, Aya=1, zee=2}");
     }
 
     @Test
@@ -38,7 +38,7 @@ class GreetedTest {
         Greeted greeted = new Greeted();
         greeted.greetUser("Aya","Isixhosa");
         greeted.reset();
-        assertEquals(greeted.greeted().toString(),"{}");
+        assertEquals(greeted.greeted(),"{}");
     }
 
     @Test
@@ -48,7 +48,7 @@ class GreetedTest {
         greeted.greetUser("ze", "English");
         System.out.println(greeted.remove("guygi"));
 
-        assertEquals(greeted.greeted().toString(),"{zee=1, ze=1}");
+        assertEquals(greeted.greeted(),"{zee=1, ze=1}");
 
     }
 

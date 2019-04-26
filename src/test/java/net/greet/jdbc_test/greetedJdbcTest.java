@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class greetedJdbcTest {
 
-    final String GREET_DATABASE_URL = "jdbc:h2:./target/greet_db";
+    final String GREET_DATABASE_URL = "jdbc:h2:./target/greetings_db";
 
     public Connection getConnection() throws Exception {
 
