@@ -92,7 +92,8 @@ import static java.lang.Class.forName;
       }
 
       @Override
-      public int greeted( ) {
+      public int greeted( ){
+
           return 0;
       }
 
@@ -127,7 +128,7 @@ import static java.lang.Class.forName;
       @Override
       public int totalGreeted( ) {
 
-          return 0;
+          return this.totalGreeted();
       }
 
       @Override

@@ -27,7 +27,7 @@ public class Greeted implements GreetedUser {
     @Override
     public int totalGreeted( String userName ) {
 
-        return 0;
+        return this.totalGreeted( userName);
     }
 
 //    @Override
@@ -50,9 +50,13 @@ public class Greeted implements GreetedUser {
 
     @Override
     public int greeted( ) {
-        return this.greeted();
+        return 0;
     }
 
+    //    @Override
+//    public int greeted( ) {
+//        return 0;
+//    }
     @Override
     public void findUser( String userName ) {
 
