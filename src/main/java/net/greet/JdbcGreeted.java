@@ -1,7 +1,5 @@
 package net.greet;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Map;
 
 import static java.lang.Class.forName;
 
@@ -63,9 +61,9 @@ import static java.lang.Class.forName;
       public void greetUser( String userName, String language ) {
 
           try {
-              psfindName.setString(1, userName);
+              psCreateNewinsertDB.setString(1, userName);
 
-              ResultSet rs = psfindName.executeQuery();
+              ResultSet rs = psfindCounter.executeQuery();
 
               if (!rs.next()) {
 
@@ -74,9 +72,9 @@ import static java.lang.Class.forName;
                   psCreateNewinsertDB.execute();
 
               } else {
-                  int greetCounter = rs.getInt("greetcounter") + 1;
+                  int greetCounter = rs.getInt("greet_counter") + 1;
 
-//                psupdateCounter.setInt( 1, greetCounter);
+                  psupdateCounter.setInt(1, greetCounter);
                   psupdateCounter.setString(1, userName);
                   psupdateCounter.execute();
 
@@ -99,67 +97,67 @@ import static java.lang.Class.forName;
       }
 
       @Override
-      public String findUser (String userName) {
-
-          try {
-              psfindUser.setString(1, userName);
-
-              ResultSet rs = psfindUser.executeQuery();
-
-              if (rs.next()) {
-                  //Add to map
-                  Map<String, Integer>Map = new HashMap<String, Integer >();
-
-                  Map.put(rs.getString("user_name");
-                  Map.put(rs.getInt("greet_counter");
-
-                  psfindUser.setString(1, userName.toString());
-                  psfindUser.setInt(2, 1);
-                  psfindUser.execute();
-
-              }
-
-          } catch (Exception e) {
-
-          }
+      public void findUser( String userName ) {
+//
+//          try {
+//              psfindUser.setString(1, userName);
+//
+//              ResultSet rs = psfindUser.executeQuery();
+//
+//              if (rs.next()) {
+//                  //Add to map
+//                  Map< String, Integer > Map = new HashMap<>();
+//                  int greet_counter;
+//                  String user_name;
+////
+////                  Map.put(rs.getString("user_name"));
+////                  Map.put(rs.getInt("greet_counter"));
+////
+////                  psfindUser.setString(1, userName.toString());
+////                  psfindUser.setInt(2, 1);
+//                  psfindUser.execute();
+//
+//              }
+//
+//          } catch (Exception e) {
+//              e.printStackTrace();
+//          }
       }
 
       @Override
-      public int getGreetCounter( ) {
+      public int totalGreeted( ) {
+
           return 0;
       }
 
       @Override
-      public void setGreetCounter( int greetCounter ) {
+      public int totalGreeted(String userName) {
+          try {
+              psfindCounter.setString(1,userName);
 
+              ResultSet rs = psfindCounter.executeQuery();
+
+              if (rs.next());
+
+
+              else {
+//                  System.out.println("");
+              }
+          }
+
+          catch (SQLException ex){
+              ex.printStackTrace();
+          }
+          return 0;
       }
+
+
 
       @Override
       public String remove( String userName ) {
           return null;
       }
 
-      @Override
-        public int totalGreeted(String userName){
-
-        try {
-            psfindCounter.setString(1, userName );
-
-            ResultSet rs = psfindCounter.executeQuery();
-
-            if (rs.next());
-
-
-            else {
-                System.out.println("");
-            }
-        }
-
-        catch (SQLException ex){
-            ex.printStackTrace();
-        }
-        return 0;
-    }
-}
+  }
 
 

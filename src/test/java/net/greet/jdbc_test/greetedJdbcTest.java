@@ -1,4 +1,5 @@
 package net.greet.jdbc_test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -12,11 +13,11 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 public class greetedJdbcTest {
 
-    final String GREET_DATABASE_URL = "jdbc:h2:./target/greetings_db";
+    final String DATABASE_URL = "jdbc:h2:./target/greetings_db";
 
     public Connection getConnection() throws Exception {
 
-        Connection conn = DriverManager.getConnection( GREET_DATABASE_URL, "sa", "");
+        Connection conn = DriverManager.getConnection( DATABASE_URL, "sa", "");
         return conn;
     }
 
@@ -32,11 +33,11 @@ public class greetedJdbcTest {
     @BeforeEach
     public void cleanUpTables() {
         try {
-            try (Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "")) {
+            try (Connection conn = DriverManager.getConnection(DATABASE_URL, "sa", "")) {
                 // delete NAMES that the tests are adding
 
                 Statement statement = conn.createStatement();
-                statement.addBatch("delete from users where user_name in ('ZEE','YASH')");
+                statement.addBatch("delete from users where user_name in ('YASH')");
                 statement.executeBatch();
 
             }
@@ -62,7 +63,7 @@ public class greetedJdbcTest {
     public void connectToDatabase() {
         try {
             Class.forName("org.h2.Driver");
-            Connection conn = (DriverManager.getConnection(GREET_DATABASE_URL, "sa", ""));
+            Connection conn = (DriverManager.getConnection(DATABASE_URL, "sa", ""));
         }
         catch (Exception e) {
             fail(e);
@@ -73,7 +74,7 @@ public class greetedJdbcTest {
     public void ExecuteSQLStatement() {
         try {
 //            forName("org.h2.Driver");
-            Connection conn = (DriverManager.getConnection(GREET_DATABASE_URL, "sa", ""));
+            Connection conn = (DriverManager.getConnection(DATABASE_URL, "sa", ""));
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("select * from  users");
         }
@@ -88,8 +89,8 @@ public class greetedJdbcTest {
     public void insertUsers()throws Exception {
         try {
 //            forName("org.h2.Driver");
-            Connection conn = (DriverManager.getConnection(GREET_DATABASE_URL, "sa", ""));
-            final String INSERT_USERS_SQL = "insert into users(user_name, greet_counter) values (?, ?)";
+            Connection conn = (DriverManager.getConnection(DATABASE_URL, "sa", ""));
+            final String INSERT_USERS_SQL = "insert into users(user_name, greet_counter) values (?,?)";
             Statement statement = conn.createStatement();
 
             PreparedStatement insertName;
@@ -111,7 +112,7 @@ public class greetedJdbcTest {
 
             if (rs.next()){
                 //Add rows in the tables
-                assertEquals( "AYA", rs.getString( "user_name"));
+                assertEquals("AYA", rs.getString( "user_name"));
                 assertEquals(1, rs.getInt( "greet_counter"));
             }
         }
@@ -126,7 +127,8 @@ public class greetedJdbcTest {
     public void findGreetedUsers()throws Exception{
 
         try {
-            Connection conn = getConnection();
+            Connection conn;
+            conn = getConnection();
             final String FIND_COUNTER_SQL = "select * from users";
             PreparedStatement findcounter = conn.prepareStatement(FIND_COUNTER_SQL);
 
@@ -136,23 +138,19 @@ public class greetedJdbcTest {
 
             int greetCounter = 1;
 //            System.out.println(rs.getString("user_name"));
-            while (rs.next()) {
-//                System.out.println(rs.getString("user_name"));
-//                System.out.println(greetCounter);
+            //                System.out.println(rs.getString("user_name"));
+            //                System.out.println(greetCounter);
+            //                greetCounter++;
+            while (rs.next()) if (greetCounter == 1) {
 
-                if (greetCounter == 1) {
+                assertEquals("AYA", rs.getString("user_name"));
+                assertEquals(1, rs.getInt("greet_counter"));
 
-                    assertEquals("AYA", rs.getString("user_name"));
-                    assertEquals(1, rs.getInt("greet_counter"));
-
-                } else if (greetCounter == 2) {
-                    assertEquals("AYA", rs.getString("user_name"));
-                    assertEquals(1, rs.getInt("greet_counter"));
-                }
-//                greetCounter++;
-
-
-            };
+            } else if (greetCounter == 2) {
+                assertEquals("AYA", rs.getString("user_name"));
+                assertEquals(1, rs.getInt("greet_counter"));
+            }
+            ;
             assertEquals(1, greetCounter);
         }
 

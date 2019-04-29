@@ -4,19 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Greeted implements GreetedUser{
+public class Greeted implements GreetedUser {
 
-    Map< String, Integer> greetMap = new HashMap<String, Integer>();
-    private  int greetCounter =1;
+    Map< String, Integer > greetMap = new HashMap< String, Integer >();
+    private int greetCounter = 1;
 
+    @Override
+    public void greetUser( String userName, String language ) {
 
-    public void greetUser(String userName, String language){
-
-        if(!greetMap.containsKey(userName)){
+        if (!greetMap.containsKey(userName)) {
             greetMap.put(userName, greetCounter);
 
-        }
-        else {
+        } else {
             int greetCounter = greetMap.get(userName);
             greetCounter++;
             greetMap.put(userName, greetCounter);
@@ -27,47 +26,39 @@ public class Greeted implements GreetedUser{
 
     @Override
     public int totalGreeted( String userName ) {
+
         return 0;
     }
 
+//    @Override
+//    public int totalGreeted( ) {
+//        return greetMap.size();
+//    }
 
-    public int totalGreeted(){
+    @Override
+    public int totalGreeted( ) {
 
         return greetMap.size();
     }
 
     @Override
-    public void loadJdbcclass( ) {
-
-    }
-
-    public void reset(){
-      System.out.println("reset names");
+    public void reset( ) {
+        System.out.println("reset names");
         greetMap.clear();
 
     }
 
-     @Override
-     public int greeted( ) {
-         return 0;
-     }
-
     @Override
-    public String findUser( String userName ) {
-        return null;
-    }
-
-
-    @Override
-    public int getGreetCounter( ) {
-        return 0;
+    public int greeted( ) {
+        return this.greeted();
     }
 
     @Override
-    public void setGreetCounter( int greetCounter ) {
+    public void findUser( String userName ) {
 
     }
 
+    @Override
     public String remove(String userName){
 
         if (greetMap.containsKey(userName)){
