@@ -7,7 +7,7 @@ public interface GreetedUser {
     String remove(String userName);
     void reset();
     int greeted();
-    void findUser( String userName);
+    void findUser( String userName) throws Exception;
 
     int totalGreeted( );
 }

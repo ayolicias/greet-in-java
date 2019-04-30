@@ -58,8 +58,12 @@ public class Greeted implements GreetedUser {
 //        return 0;
 //    }
     @Override
-    public void findUser( String userName ) {
-
+    public void findUser(String userName) throws Exception {
+        if (userName.isEmpty ( ) == true) {
+            System.out.println ( "no users have been greeted yet" );
+        } else {
+            System.out.println ( userName );
+        }
     }
 
     @Override

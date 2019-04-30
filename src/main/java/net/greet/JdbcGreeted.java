@@ -98,31 +98,15 @@ import static java.lang.Class.forName;
       }
 
       @Override
-      public void findUser( String userName ) {
-//
-//          try {
-//              psfindUser.setString(1, userName);
-//
-//              ResultSet rs = psfindUser.executeQuery();
-//
-//              if (rs.next()) {
-//                  //Add to map
-//                  Map< String, Integer > Map = new HashMap<>();
-//                  int greet_counter;
-//                  String user_name;
-////
-////                  Map.put(rs.getString("user_name"));
-////                  Map.put(rs.getInt("greet_counter"));
-////
-////                  psfindUser.setString(1, userName.toString());
-////                  psfindUser.setInt(2, 1);
-//                  psfindUser.execute();
-//
-//              }
-//
-//          } catch (Exception e) {
-//              e.printStackTrace();
-//          }
+      public void findUser(String userName) throws Exception {
+          PreparedStatement ps = conn.prepareStatement ( "select * from users");
+          ResultSet rs = ps.executeQuery ( );
+
+          while ( rs.next ( ) ) {
+              rs.getString( userName);
+              rs.getInt("greet_counter");
+
+          }
       }
 
       @Override
