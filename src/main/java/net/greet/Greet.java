@@ -7,7 +7,7 @@ public class Greet {
     public String Name;
     public String Language;
 
-    public static void main( String[] args ) throws SQLException {
+    public static void main( String[] args ) throws Exception {
 
 //        GreetedUser greeter = new Greeted();
         GreetedUser greeter = new JdbcGreeted();

@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class Greeted implements GreetedUser {
 
+    public String greeted;
+
     Map< String, Integer > greetMap = new HashMap< String, Integer >();
     private int greetCounter = 1;
 
@@ -49,20 +51,17 @@ public class Greeted implements GreetedUser {
     }
 
     @Override
-    public String greeted( ) {
-        return "0";
-    }
+    public String greeted() throws Exception {
 
-    //    @Override
-//    public int greeted( ) {
-//        return 0;
-//    }
+
+        return greeted();
+    }
     @Override
     public void findUser(String userName) throws Exception {
-        if (userName.isEmpty ( ) == true) {
+        if ((userName.isEmpty() == true)) {
             System.out.println ( "no users have been greeted" );
         } else {
-            System.out.println ( userName );
+            System.out.println (userName );
         }
     }
 
@@ -81,6 +80,20 @@ public class Greeted implements GreetedUser {
     }
 
 
+    public int greetMap() {
+        return greetMap.size();
+    }
+
+    @Override
+    public void help() {
+
+
+    }
+
+    @Override
+    public void exit() {
+        System.exit(0);
+    }
 }
 
 

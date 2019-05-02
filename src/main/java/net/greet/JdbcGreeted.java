@@ -43,12 +43,15 @@ import static java.lang.Class.forName;
       final String FIND_USER_SQL = "select * from users where user_name = ?";
       final String UPDATE_USERS_NAME_GREET_COUNT = "update users set greet_counter = greet_counter + 1 where user_name = ?";
       final String DELETE_NAMES_SQL = "delete from users";
+      final String REMOVE_USERS = "DELETE FROM users WHERE user_name = ?";
 
       PreparedStatement psCreateNewinsertDB;
       PreparedStatement psfindCounter;
       PreparedStatement psupdateCounter;
       PreparedStatement psdeleteAll;
       PreparedStatement psfindUser;
+      PreparedStatement psremove;
+
 
       public JdbcGreeted( ) {
           try {
@@ -57,6 +60,7 @@ import static java.lang.Class.forName;
               psupdateCounter = conn.prepareStatement(UPDATE_USERS_NAME_GREET_COUNT);
               psdeleteAll = conn.prepareStatement(DELETE_NAMES_SQL);
               psfindUser = conn.prepareStatement(FIND_USER_SQL);
+              psremove = conn.prepareStatement(REMOVE_USERS);
           }
           catch (Exception e){
           }
@@ -93,15 +97,20 @@ import static java.lang.Class.forName;
 
       @Override
       public void reset( ) {
-
+          try {
+              psdeleteAll.execute();
+          }
+          catch (Exception e){
+              e.printStackTrace();
+              }
       }
 
       @Override
-      public String greeted(){
+      public String greeted() throws Exception{
           try {
               ResultSet resultSet = psfindCounter.executeQuery();
               while (resultSet.next()) {
-                  greetMap.put(resultSet.getString("user_name"), resultSet.getInt("greet_counter"));
+                  greetMap.put(resultSet.getString(""), resultSet.getInt("greet_counter"));
               }
               return greetMap.toString();
           }
@@ -131,6 +140,22 @@ import static java.lang.Class.forName;
       }
 
       @Override
+      public int greetMap() {
+      return greetMap.size();
+
+      }
+
+      @Override
+      public void help() {
+          System.out.println("users need to greet");//need fixed
+      }
+
+      @Override
+      public void exit() {
+        System.exit(0);
+      }
+
+      @Override
       public int totalGreeted(String userName) {
           try {
               psfindCounter.setString(1,userName);
@@ -152,11 +177,20 @@ import static java.lang.Class.forName;
       }
 
 
-
       @Override
-      public String remove( String userName ) {
-          return null;
+      public String remove(String userName) {
+          try {
+              remove(userName).isEmpty();
+              remove(userName).toString();
+              System.out.println ("cleared deleted from database" );
+          }
+
+          catch (Exception e){
+              e.printStackTrace();
+          }
+          return userName;
       }
+
 
     }
 

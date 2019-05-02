@@ -189,7 +189,7 @@ public class greetedJdbcTest {
             }
             @Test
 
-            public void greetedUser() throws SQLException {
+            public void greetedUser() throws Exception {
 
                 JdbcGreeted jdbcGreeted = new JdbcGreeted();
                 assertEquals(1, jdbcGreeted.greeted());

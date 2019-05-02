@@ -6,7 +6,17 @@ public interface GreetedUser {
     int totalGreeted(String userName);
     String remove(String userName);
     void reset();
-    String greeted();
+    String greeted() throws Exception;
     void findUser(String userName) throws Exception;
     int totalGreeted( );
-}
+    int greetMap() ;
+    void help();
+    void exit();
+
+
+
+
+
+
+
+    }

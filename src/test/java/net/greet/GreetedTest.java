@@ -1,10 +1,12 @@
 package net.greet;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GreetedTest {
+    @BeforeEach
 
     @Test
     public void shouldGreetAPerson(){
@@ -18,7 +20,7 @@ class GreetedTest {
     }
 
     @Test
-    public void shouldgetCount(){
+    public void shouldgetCount() throws Exception {
 
         Greeted greeted = new Greeted();
         greeted.greetUser("Yamkela", "Zulu");
@@ -30,11 +32,12 @@ class GreetedTest {
 
         greeted.greetUser("Aya","Isixhosa");
 
-        assertEquals(greeted.greeted(),"{Yamkela=3, Aya=1, zee=2}");
+
+        assertEquals(greeted.greetMap(),"{Yamkela=3, Aya=1, zee=2}");
     }
 
     @Test
-    public void shouldResetUser(){
+    public void shouldResetUser() throws Exception {
         Greeted greeted = new Greeted();
         greeted.greetUser("Aya","Isixhosa");
         greeted.reset();
@@ -42,13 +45,13 @@ class GreetedTest {
     }
 
     @Test
-    public void shouldClearName(){
+    public void shouldClearName() throws Exception {
         Greeted greeted = new Greeted();
         greeted.greetUser("zee", "English");
         greeted.greetUser("ze", "English");
         System.out.println(greeted.remove("guygi"));
 
-        assertEquals(greeted.greeted(),"{zee=1, ze=1}");
+        assertEquals(greeted.greeted.toString(),"{zee=1, ze=1}");
 
     }
 
