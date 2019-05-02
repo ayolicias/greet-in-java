@@ -1,4 +1,6 @@
 package net.greet.jdbc_test;
+import net.greet.GreetedUser;
+import net.greet.JdbcGreeted;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -36,10 +38,7 @@ public class greetedJdbcTest {
             try (Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "")) {
                 // delete NAMES that the tests are adding
 
-                Statement statement = conn.createStatement();
-                statement.addBatch("delete from users where user_name in ('ZEE','YASH')");
-                statement.executeBatch();
-
+                conn.createStatement().execute("delete from users where user_name in ('ZEE','YASH')");
             }
         }
         catch(Exception ex) {
@@ -48,7 +47,7 @@ public class greetedJdbcTest {
     }
 
     @Test
-    public void loadJdbcClass() {
+    public void loadJdbcclass() {
 
         try {
 
@@ -112,7 +111,7 @@ public class greetedJdbcTest {
 
             if (rs.next()){
                 //Add rows in the tables
-//                assertEquals( "AYA", rs.getString(userName));
+                assertEquals( "AYA", rs.getString("user_name"));
                 assertEquals(1, rs.getInt( "greet_counter"));
             }
         }
@@ -125,18 +124,15 @@ public class greetedJdbcTest {
 
     @Test
     public void findGreetedUsers()throws Exception {
+        Connection conn = getConnection();
 
         try {
-            Connection conn = getConnection();
             String FIND_COUNTER_SQL = "select * from users";
             PreparedStatement findcounter = conn.prepareStatement(FIND_COUNTER_SQL);
-
-//            findcounter.setInt(1, 3);
 
             ResultSet rs = findcounter.executeQuery();
 
             int greetCounter = 1;
-//            System.out.println(rs.getString("user_name"));
             while (rs.next()) {
 
 
@@ -160,15 +156,15 @@ public class greetedJdbcTest {
             }
         }
 
-
+            @Test
             //noinspection deprecation
             public void updateUsers () throws Exception {
 
                 try {
 
-            Connection conn = getConnection();
+                    Connection conn = getConnection();
                     FIND_COUNTER_SQL = "select * from users";
-                    final String UPDATE_USERS_NAME_GREET_COUNT = "update users set greet_counter = greet_counter + 1 where user_name = ?";
+                    final String UPDATE_USERS_NAME_GREET_COUNT = "update users set greet_counter = greet_counter where user_name = ?";
 
                     PreparedStatement updateCounter = conn.prepareStatement(UPDATE_USERS_NAME_GREET_COUNT);
                     PreparedStatement findCounter = conn.prepareStatement(FIND_COUNTER_SQL);
@@ -188,7 +184,15 @@ public class greetedJdbcTest {
                     }
                 }
                 catch ( Exception e){
-                    fail(e);
+                    e.printStackTrace();
                 }
+            }
+            @Test
+
+            public void greetedUser() throws SQLException {
+
+                JdbcGreeted jdbcGreeted = new JdbcGreeted();
+                assertEquals(1, jdbcGreeted.greeted());
+
             }
         }

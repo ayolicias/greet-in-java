@@ -20,7 +20,4 @@ public enum Languages {
     public String getGreets( String userName ){
         return greets + userName;
     }
-
-
-
 }

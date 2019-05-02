@@ -49,8 +49,8 @@ public class Greeted implements GreetedUser {
     }
 
     @Override
-    public int greeted( ) {
-        return 0;
+    public String greeted( ) {
+        return "0";
     }
 
     //    @Override
@@ -60,7 +60,7 @@ public class Greeted implements GreetedUser {
     @Override
     public void findUser(String userName) throws Exception {
         if (userName.isEmpty ( ) == true) {
-            System.out.println ( "no users have been greeted yet" );
+            System.out.println ( "no users have been greeted" );
         } else {
             System.out.println ( userName );
         }

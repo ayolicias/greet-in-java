@@ -4,13 +4,20 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Greet {
-//    public String Name;
-//    public String Language;
+    public String Name;
+    public String Language;
 
     public static void main( String[] args ) throws SQLException {
 
 //        GreetedUser greeter = new Greeted();
         GreetedUser greeter = new JdbcGreeted();
+
+//        JdbcGreeted jdbcGreeted = new JdbcGreeted();
+//        jdbcGreeted.greetUser("a", "xhosa");
+//        jdbcGreeted.greetUser("r", "xhosa");
+//        jdbcGreeted.greetUser("a", "xhosa");
+//        jdbcGreeted.greetUser("ar", "xhosa");
+//        System.out.println(jdbcGreeted.greeted());
 
         Scanner scanner = new Scanner(System.in);
 
