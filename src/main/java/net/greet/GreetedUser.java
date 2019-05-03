@@ -3,7 +3,7 @@ package net.greet;
 public interface GreetedUser {
 
     void greetUser(String userName, String language);
-    int totalGreeted(String userName);
+    void totalGreeted( String userName);
     String remove(String userName);
     void reset();
     String greeted() throws Exception;
@@ -12,11 +12,4 @@ public interface GreetedUser {
     int greetMap() ;
     void help();
     void exit();
-
-
-
-
-
-
-
-    }
+}

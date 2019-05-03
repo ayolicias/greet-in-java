@@ -95,6 +95,7 @@ import static java.lang.Class.forName;
 
       }
 
+
       @Override
       public void reset( ) {
           try {
@@ -135,8 +136,7 @@ import static java.lang.Class.forName;
 
       @Override
       public int totalGreeted( ) {
-
-          return greetMap.size();
+          return 0;
       }
 
       @Override
@@ -156,9 +156,9 @@ import static java.lang.Class.forName;
       }
 
       @Override
-      public int totalGreeted(String userName) {
+      public void totalGreeted( String userName) {
           try {
-              psfindCounter.setString(1,userName);
+              psfindCounter.setString(1, userName);
 
               ResultSet rs = psfindCounter.executeQuery();
 
@@ -173,7 +173,7 @@ import static java.lang.Class.forName;
           catch (SQLException ex){
               ex.printStackTrace();
           }
-          return 0;
+//          return 0;
       }
 
 
@@ -181,7 +181,7 @@ import static java.lang.Class.forName;
       public String remove(String userName) {
           try {
               remove(userName).isEmpty();
-              remove(userName).toString();
+              remove(userName);
               System.out.println ("cleared deleted from database" );
           }
 

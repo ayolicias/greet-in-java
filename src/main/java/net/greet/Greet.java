@@ -12,13 +12,6 @@ public class Greet {
 //        GreetedUser greeter = new Greeted();
         GreetedUser greeter = new JdbcGreeted();
 
-//        JdbcGreeted jdbcGreeted = new JdbcGreeted();
-//        jdbcGreeted.greetUser("a", "xhosa");
-//        jdbcGreeted.greetUser("r", "xhosa");
-//        jdbcGreeted.greetUser("a", "xhosa");
-//        jdbcGreeted.greetUser("ar", "xhosa");
-//        System.out.println(jdbcGreeted.greeted());
-
         Scanner scanner = new Scanner(System.in);
 
         boolean exit = true;
@@ -41,7 +34,7 @@ public class Greet {
                     System.out.println(Languages.valueOf(language).getGreets(command[1]));
                     greeter.greetUser(command[1], language);
 
-                    System.out.println(greeter.totalGreeted());
+//                    System.out.println(greeter.totalGreeted(command[1]));
 
                 } catch (ArrayIndexOutOfBoundsException e) {
                     String language = "TSWANA";

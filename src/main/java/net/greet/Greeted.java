@@ -27,21 +27,16 @@ public class Greeted implements GreetedUser {
     }
 
     @Override
-    public int totalGreeted( String userName ) {
-
-        return this.totalGreeted( userName);
+    public void totalGreeted( String userName ) {
+//        return 0;
     }
 
-//    @Override
-//    public int totalGreeted( ) {
-//        return greetMap.size();
-//    }
 
     @Override
-    public int totalGreeted( ) {
-
+    public int totalGreeted() {
         return greetMap.size();
     }
+
 
     @Override
     public void reset( ) {
@@ -52,10 +47,9 @@ public class Greeted implements GreetedUser {
 
     @Override
     public String greeted() throws Exception {
-
-
-        return greeted();
+        return null;
     }
+
     @Override
     public void findUser(String userName) throws Exception {
         if ((userName.isEmpty() == true)) {
@@ -64,6 +58,7 @@ public class Greeted implements GreetedUser {
             System.out.println (userName );
         }
     }
+
 
     @Override
     public String remove(String userName){

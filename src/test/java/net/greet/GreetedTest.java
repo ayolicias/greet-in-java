@@ -33,7 +33,7 @@ class GreetedTest {
         greeted.greetUser("Aya","Isixhosa");
 
 
-        assertEquals(greeted.greetMap(),"{Yamkela=3, Aya=1, zee=2}");
+        assertEquals(greeted.greeted(),"{Yamkela=3, Aya=1, zee=2}");
     }
 
     @Test
