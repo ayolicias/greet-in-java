@@ -51,8 +51,7 @@ class GreetedTest {
         greeted.greetUser("ze", "English");
         System.out.println(greeted.remove("guygi"));
 
-        assertEquals(greeted.greeted.toString(),"{zee=1, ze=1}");
-
+        assertEquals(greeted.greeted(),"{zee=1, ze=1}");
     }
 
 }
