@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+
 import java.sql.*;
 
 import static java.lang.Class.forName;
@@ -107,7 +108,7 @@ public class greetedJdbcTest {
             insertName.setInt(2, 1);
             insertName.execute();
 
-            ResultSet rs = statement.executeQuery("select * from users");
+            ResultSet rs = statement.executeQuery("select * from users where user_name = 'AYA'");
 
             if (rs.next()){
                 //Add rows in the tables
@@ -138,61 +139,83 @@ public class greetedJdbcTest {
 
                 if (greetCounter == 6) {
 
-//                    assertEquals("AYA", rs.getString("user_name"));
                     assertEquals(1, rs.getInt("greet_counter"));
 
                 }
                 else if (greetCounter == 2) {
-//                    assertEquals("AYA", rs.getString("user_name"));
                     assertEquals(1, rs.getInt("greet_counter"));
                 }
 
 
-                }
+            }
+
+        }
+        catch(Exception e){
+            fail(e);
+        }
+    }
+
+    @Test
+    //noinspection deprecation
+    public void updateUsers () throws Exception {
+
+        try {
+
+            Connection conn = getConnection();
+            FIND_COUNTER_SQL = "select * from users";
+            final String UPDATE_USERS_NAME_GREET_COUNT = "update users set greet_counter = greet_counter where user_name = ?";
+
+            PreparedStatement updateCounter = conn.prepareStatement(UPDATE_USERS_NAME_GREET_COUNT);
+            PreparedStatement findCounter = conn.prepareStatement(FIND_COUNTER_SQL);
+
+            updateCounter.setString(1, "YASH");
+            updateCounter.executeUpdate();
+
+
+            ResultSet rs = findCounter.executeQuery();
+
+            if (rs.next()) {
+                assertEquals(1, rs.getInt("greet_counter"));
 
             }
-            catch(Exception e){
-                fail(e);
+            else {
+                System.out.println("Should find the user_name in the database");
+            }
+        }
+        catch ( Exception e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+
+    public void greetedUser() throws Exception {
+
+        try {
+            Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "");
+            ResultSet rs = null;
+
+            final String INSERT_USERS_SQL = "insert into users(user_name, greet_counter) values (?,?)";
+            PreparedStatement insertName = conn.prepareStatement ( INSERT_USERS_SQL );
+
+
+            insertName.setString(1, "YASH");
+            insertName.setInt(2, 1);
+            insertName.execute();
+
+            PreparedStatement ps = conn.prepareStatement ( "select * from users where user_name = ?" );
+
+            ps.setString ( 1 , "YASH" );
+            rs = ps.executeQuery ( );
+
+            if ( rs.next ( ) ) {
+                assertEquals("YASH",rs.getString("user_name"));
+                assertEquals(1, rs.getInt("greet_counter"));
+
             }
         }
 
-            @Test
-            //noinspection deprecation
-            public void updateUsers () throws Exception {
-
-                try {
-
-                    Connection conn = getConnection();
-                    FIND_COUNTER_SQL = "select * from users";
-                    final String UPDATE_USERS_NAME_GREET_COUNT = "update users set greet_counter = greet_counter where user_name = ?";
-
-                    PreparedStatement updateCounter = conn.prepareStatement(UPDATE_USERS_NAME_GREET_COUNT);
-                    PreparedStatement findCounter = conn.prepareStatement(FIND_COUNTER_SQL);
-
-                    updateCounter.setString(1, "YASH");
-                    updateCounter.executeUpdate();
-
-
-                    ResultSet rs = findCounter.executeQuery();
-
-                    if (rs.next()) {
-                        assertEquals(1, rs.getInt("greet_counter"));
-
-                    }
-                    else {
-                        System.out.println("Should find the user_name in the database");
-                    }
-                }
-                catch ( Exception e){
-                    e.printStackTrace();
-                }
-            }
-            @Test
-
-            public void greetedUser() throws Exception {
-
-                JdbcGreeted jdbcGreeted = new JdbcGreeted();
-                assertEquals(1, jdbcGreeted.greeted());
-
-            }
+          catch ( Exception e){
+            e.printStackTrace();
         }
+    }
+}
