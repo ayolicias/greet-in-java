@@ -9,7 +9,6 @@ public interface GreetedUser {
     String greeted() throws Exception;
     void findUser(String userName) throws Exception;
     int totalGreeted( );
-    int greetMap() ;
     void help();
     void exit();
 }

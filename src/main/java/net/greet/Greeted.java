@@ -1,5 +1,6 @@
 package net.greet;
 
+import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,8 +48,10 @@ public class Greeted implements GreetedUser {
 
     @Override
     public String greeted() throws Exception {
-        return null;
-    }
+
+            return greetMap.toString();
+        }
+
 
     @Override
     public void findUser(String userName) throws Exception {
