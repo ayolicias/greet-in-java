@@ -18,9 +18,9 @@ public class greetedJdbcTest {
     final String GREET_DATABASE_URL = "jdbc:h2:./target/greetings_db";
     private String FIND_COUNTER_SQL;
 
-    public Connection getConnection() throws Exception {
+    public Connection getConnection( ) throws Exception {
 
-        Connection conn = DriverManager.getConnection( GREET_DATABASE_URL, "sa", "");
+        Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "");
         return conn;
     }
 
@@ -34,51 +34,47 @@ public class greetedJdbcTest {
      * */
 
     @BeforeEach
-    public void cleanUpTables() {
+    public void cleanUpTables( ) {
         try {
             try (Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "")) {
                 // delete NAMES that the tests are adding
 
                 conn.createStatement().execute("delete from users where user_name in ('ZEE','YASH')");
             }
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             System.out.println("These test will fail until the users table is created: " + ex);
         }
     }
 
     @Test
-    public void loadJdbcclass() {
+    public void loadJdbcclass( ) {
 
         try {
 
             Class.forName("org.h2.Driver");
-        }
-        catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             fail(e);
         }
     }
 
     @Test
-    public void connectToDatabase() {
+    public void connectToDatabase( ) {
         try {
             Class.forName("org.h2.Driver");
             Connection conn = (DriverManager.getConnection(GREET_DATABASE_URL, "sa", ""));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             fail(e);
         }
     }
 
     @Test
-    public void ExecuteSQLStatement() {
+    public void ExecuteSQLStatement( ) {
         try {
 //            forName("org.h2.Driver");
             Connection conn = (DriverManager.getConnection(GREET_DATABASE_URL, "sa", ""));
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("select * from  users");
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             fail(e);
         }
 
@@ -86,7 +82,7 @@ public class greetedJdbcTest {
 
 
     @Test
-    public void insertUsers()throws Exception {
+    public void insertUsers( ) throws Exception {
         try {
 //            forName("org.h2.Driver");
             Connection conn = (DriverManager.getConnection(GREET_DATABASE_URL, "sa", ""));
@@ -96,7 +92,7 @@ public class greetedJdbcTest {
             PreparedStatement insertName;
             insertName = conn.prepareStatement(INSERT_USERS_SQL);
 
-            insertName.setString(1,"ZEE");
+            insertName.setString(1, "ZEE");
             insertName.setInt(2, 1);
             insertName.execute();
 
@@ -110,21 +106,19 @@ public class greetedJdbcTest {
 
             ResultSet rs = statement.executeQuery("select * from users where user_name = 'AYA'");
 
-            if (rs.next()){
+            if (rs.next()) {
                 //Add rows in the tables
-                assertEquals( "AYA", rs.getString("user_name"));
-                assertEquals(1, rs.getInt( "greet_counter"));
+                assertEquals("AYA", rs.getString("user_name"));
+                assertEquals(1, rs.getInt("greet_counter"));
             }
-        }
-
-        catch (Exception e) {
-            fail (e);
+        } catch (Exception e) {
+            fail(e);
         }
 
     }
 
     @Test
-    public void findGreetedUsers()throws Exception {
+    public void findGreetedUsers( ) throws Exception {
         Connection conn = getConnection();
 
         try {
@@ -141,23 +135,21 @@ public class greetedJdbcTest {
 
                     assertEquals(1, rs.getInt("greet_counter"));
 
-                }
-                else if (greetCounter == 2) {
+                } else if (greetCounter == 2) {
                     assertEquals(1, rs.getInt("greet_counter"));
                 }
 
 
             }
 
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             fail(e);
         }
     }
 
     @Test
     //noinspection deprecation
-    public void updateUsers () throws Exception {
+    public void updateUsers( ) throws Exception {
 
         try {
 
@@ -177,45 +169,80 @@ public class greetedJdbcTest {
             if (rs.next()) {
                 assertEquals(1, rs.getInt("greet_counter"));
 
-            }
-            else {
+            } else {
                 System.out.println("Should find the user_name in the database");
             }
-        }
-        catch ( Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Test
 
-    public void greetedUser() throws Exception {
+    public void greetedUser( ) throws Exception {
 
         try {
             Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "");
-            ResultSet rs = null;
+            ResultSet rs;
 
             final String INSERT_USERS_SQL = "insert into users(user_name, greet_counter) values (?,?)";
-            PreparedStatement insertName = conn.prepareStatement ( INSERT_USERS_SQL );
+            PreparedStatement insertName = conn.prepareStatement(INSERT_USERS_SQL);
 
 
             insertName.setString(1, "YASH");
             insertName.setInt(2, 1);
             insertName.execute();
 
-            PreparedStatement ps = conn.prepareStatement ( "select * from users where user_name = ?" );
+            PreparedStatement ps = conn.prepareStatement("select * from users where user_name = ?");
 
-            ps.setString ( 1 , "YASH" );
-            rs = ps.executeQuery ( );
+            ps.setString(1, "YASH");
+            rs = ps.executeQuery();
 
-            if ( rs.next ( ) ) {
-                assertEquals("YASH",rs.getString("user_name"));
+            if (rs.next()) {
+                assertEquals("YASH", rs.getString("user_name"));
                 assertEquals(1, rs.getInt("greet_counter"));
 
             }
-        }
-
-          catch ( Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-}
+
+    @Test
+    public void remove( ) throws SQLException {
+        try {
+            try(Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "")) {
+                // delete names in database!!!
+                Statement statement = conn.createStatement();
+                statement.addBatch("delete from users where user_name in ('YASH', 'ZEE')");
+                statement.executeBatch();
+
+
+            }
+        } catch(Exception ex) {
+            System.out.println("These test will fail until the users table is created: " + ex);
+        }
+    }
+    @Test
+
+    public void help()throws Exception{
+
+        try {
+            Connection conn = DriverManager.getConnection(GREET_DATABASE_URL,"sa","");
+            Statement statement = conn.createStatement();
+//            ResultSet rs = null;
+
+//            if (rs.next()) {
+            System.out.println("Should Display the information about the App");
+//            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    }
+
+
+
+

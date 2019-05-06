@@ -1,14 +1,18 @@
 package net.greet;
 
+import java.util.Map;
+
 public interface GreetedUser {
 
     void greetUser(String userName, String language);
-    void totalGreeted( String userName);
+//    int totalGreeted( String userName);
     String remove(String userName);
     void reset();
     String greeted() throws Exception;
-    void findUser(String userName) throws Exception;
-    int totalGreeted( );
+    Map< String, Integer > findUsers() throws Exception;
+    int totalGreeted( ) throws Exception;
     void help();
     void exit();
+
+    String greetedUser( String userName ) throws Exception;
 }

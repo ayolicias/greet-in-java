@@ -39,11 +39,12 @@ public class JdbcGreeted implements GreetedUser {
 
     final String INSERT_USERS_SQL = "insert into users(user_name, greet_counter) values (?,?)";
 
-    final String FIND_COUNTER_SQL = "select * from users where user_name,greet_counter = ?,?";
+    final String FIND_COUNTER_SQL = "select * from users where user_name = ?";
     final String FIND_USER_SQL = "select * from users where user_name = ?";
-    final String UPDATE_USERS_NAME_GREET_COUNT = "update users set greet_counter = greet_counter + 1 where user_name = ?,?";
+    final String UPDATE_USERS_NAME_GREET_COUNT = "update users set greet_counter = greet_counter + 1 where user_name = ?";
     final String DELETE_NAMES_SQL = "delete from users";
-    final String REMOVE_USERS = "DELETE FROM users WHERE user_name = ?";
+    final String REMOVE_USERS = "delete from users where user_name = ?";
+    final String FIND_HELP_SQL = "select * from users";
 
     PreparedStatement psCreateNewinsertDB;
     PreparedStatement psfindCounter;
@@ -51,6 +52,7 @@ public class JdbcGreeted implements GreetedUser {
     PreparedStatement psdeleteAll;
     PreparedStatement psfindUser;
     PreparedStatement psremove;
+    PreparedStatement psfindhelp;
 
 
     public JdbcGreeted( ) {
@@ -61,6 +63,7 @@ public class JdbcGreeted implements GreetedUser {
             psdeleteAll = conn.prepareStatement(DELETE_NAMES_SQL);
             psfindUser = conn.prepareStatement(FIND_USER_SQL);
             psremove = conn.prepareStatement(REMOVE_USERS);
+            psfindhelp = conn.prepareStatement(FIND_USER_SQL);
         }
         catch (Exception e){
         }
@@ -72,7 +75,7 @@ public class JdbcGreeted implements GreetedUser {
 
 
         try {
-//              psCreateNewinsertDB.setString(1, userName);
+            psfindCounter.setString(1, userName);
 
             ResultSet rs = psfindCounter.executeQuery();
 
@@ -110,45 +113,57 @@ public class JdbcGreeted implements GreetedUser {
 
     @Override
     public String greeted() throws Exception{
-        Map< String, Integer > greetMap = new HashMap< String, Integer >();
+       return findUsers().toString();
 
-        try {
-            ResultSet resultSet = psfindCounter.executeQuery();
-            while (resultSet.next()) {
-                greetMap.put(resultSet.getString("user_name"), resultSet.getInt("greet_counter"));
-            }
-            return greetMap.toString();
-        }
-        catch (Exception e) {
-//              return greetMap.size();
-            System.out.println("Exception");
-            return greetMap.toString();
-        }
+
+
+//        try {
+//            ResultSet resultSet = psfindCounter.executeQuery();
+//            while (resultSet.next()) {
+//                greetMap.put(resultSet.getString("user_name"), resultSet.getInt("greet_counter"));
+//            }
+//            return greetMap.toString();
+//        }
+//        catch (Exception e) {
+////              return greetMap.size();
+//            System.out.println("Exception");
+//            return greetMap.toString();
+//        }
     }
 
     @Override
-    public void findUser(String userName) throws Exception {
+    public Map< String, Integer > findUsers() throws Exception {
         Map< String, Integer > greetMap = new HashMap< String, Integer >();
 
         PreparedStatement preparedStatement = conn.prepareStatement ( "select * from users");
         ResultSet rs = preparedStatement.executeQuery ( );
 
         while ( rs.next ( ) ) {
-//            rs.getString("user_name");
-            rs.getInt("greet_counter");
+           String name = rs.getString("user_name");
+            int counter = rs.getInt("greet_counter");
+            greetMap.put(name, counter);
 
         }
+
+        return greetMap;
     }
 
     @Override
-    public int totalGreeted( ) {
-        return greetMap.size();
+    public int totalGreeted( ) throws Exception {
+        return findUsers().size();
     }
-
 
     @Override
     public void help() {
-        System.out.println("users need to greet");//need fixed
+        System.out.println("greet followed by the name and the language the user is to be greeted in a specific language, \n");
+        System.out.println("greet followed by the name the user is to be greeted in a Default Language,\n");
+        System.out.println("greeted should display a list of all users that has been greeted and how many time each user has been greeted,");
+        System.out.println("\n" + "greeted followed by a username returns how many times that username have been greeted");
+        System.out.println("counter returns a count of how many unique users has been greeted,\n");
+        System.out.println("clear deletes of all users greeted and the reset the greet counter to 0,\n");
+        System.out.println("clear followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n");
+        System.out.println("exit exits the application,\n");
+        System.out.println("help shows a user an overview of all possible commands.\n");
     }
 
     @Override
@@ -157,33 +172,38 @@ public class JdbcGreeted implements GreetedUser {
     }
 
     @Override
-    public void totalGreeted( String userName) {
-        try {
-            psfindCounter.setString(1, userName);
-
-            ResultSet rs = psfindCounter.executeQuery();
-
-            if (rs.next());
-
-
-            else {
-//                  System.out.println("");
-            }
-        }
-
-        catch (SQLException ex){
-            ex.printStackTrace();
-        }
-//          return 0;
+    public String greetedUser( String userName ) throws Exception {
+        return userName + "  have been greeted: " + findUsers().get(userName);
     }
 
+//    @Override
+//    public int totalGreeted( String userName) {
+//        try {
+//            psfindCounter.setString(1, userName);
+//
+//            ResultSet rs = psfindCounter.executeQuery();
+//
+//            if (rs.next());
+//
+//
+//            else {
+////                  System.out.println("");
+//            }
+//        }
+//
+//        catch (SQLException ex){
+//            ex.printStackTrace();
+//        }
+//          return 0;
+//    }
 
     @Override
     public String remove(String userName) {
         try {
-            remove(userName).isEmpty();
-            remove(userName);
-            System.out.println ("cleared deleted from database" );
+            psremove.setString(1,userName);
+            psremove.execute();
+
+            System.out.println (userName + "has been deleted from database");
         }
 
         catch (Exception e){

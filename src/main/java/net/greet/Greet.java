@@ -45,13 +45,22 @@ public class Greet {
                 }
 
             } else if (command[0].equals("greeted")) {
-                System.out.println(greeter.greeted());
+
+                if(command.length == 2) {
+                    System.out.println(greeter.greetedUser(command[1]));
+                } else {
+                    System.out.println(greeter.greeted());
+                }
             } else if (command[0].equals("reset")) {
                 greeter.reset();
 
             }
             else if (command[0].equals("clear")){
                 greeter.remove(command[1]);
+
+            }
+            else if (command[0].equals("help")){
+                greeter.help();
 
             }
 
