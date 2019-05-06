@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6853ed2d-8c44-45ce-a092-fd60b695f0c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/Greet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/Greet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/Greeted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/Greeted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/GreetedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/GreetedUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/JdbcGreeted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/JdbcGreeted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/greet/jdbc_test/greetedJdbcTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/greet/jdbc_test/greetedJdbcTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/Greet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/Greet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/Greeted.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/Greeted.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/GreetedUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/GreetedUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/net/greet/JdbcGreeted.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/net/greet/JdbcGreeted.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/greetings_db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/greetings_db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/greetings_db.trace.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/greetings_db.trace.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/net/greet/jdbc_test/greetedJdbcTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/net/greet/jdbc_test/greetedJdbcTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -77,8 +65,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/net/greet/JdbcGreeted.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="205" column="52" selection-start-line="205" selection-start-column="52" selection-end-line="205" selection-end-column="52" />
+            <state relative-caret-position="169">
+              <caret line="200" column="43" lean-forward="true" selection-start-line="200" selection-start-column="43" selection-end-line="200" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#greetUser#0;class#JdbcGreeted#0" />
@@ -407,7 +395,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557156009804" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557156287303" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -587,12 +575,12 @@
       <window_info id="DB Browser" order="7" weight="0.32960895" />
       <window_info id="Project Explorer" order="8" weight="0.121308856" />
       <window_info id="Job Explorer" order="9" sideWeight="0.49837133" weight="0.32960895" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.41137123" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.41137123" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50151515" side_tool="true" weight="0.44147158" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32943144" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.5568562" />
-      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.49848485" visible="true" weight="0.50668895" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49848485" weight="0.50668895" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.23578595" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
@@ -772,8 +760,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/net/greet/JdbcGreeted.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="205" column="52" selection-start-line="205" selection-start-column="52" selection-end-line="205" selection-end-column="52" />
+        <state relative-caret-position="169">
+          <caret line="200" column="43" lean-forward="true" selection-start-line="200" selection-start-column="43" selection-end-line="200" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#greetUser#0;class#JdbcGreeted#0" />
