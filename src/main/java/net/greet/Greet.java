@@ -21,7 +21,7 @@ public class Greet {
 
             String input = scanner.nextLine();
 
-            String[] command = input.split(" ");
+            String[] command = input.split("");
             if (input.equals("exit")) {
                 exit = false;
                 break;
@@ -62,6 +62,9 @@ public class Greet {
             else if (command[0].equals("help")){
                 greeter.help();
 
+            }
+            else if (command[0].equals("exit")){
+                greeter.exit();
             }
 
             else System.out.println("invalid");

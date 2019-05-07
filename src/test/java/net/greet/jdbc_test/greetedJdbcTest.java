@@ -24,15 +24,6 @@ public class greetedJdbcTest {
         return conn;
     }
 
-    /*
-     * insert new user
-     * update user count
-     * find user by name
-     * delete user by name
-     * delete all users
-     * find all users
-     * */
-
     @BeforeEach
     public void cleanUpTables( ) {
         try {
@@ -70,7 +61,6 @@ public class greetedJdbcTest {
     @Test
     public void ExecuteSQLStatement( ) {
         try {
-//            forName("org.h2.Driver");
             Connection conn = (DriverManager.getConnection(GREET_DATABASE_URL, "sa", ""));
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("select * from  users");
@@ -79,12 +69,9 @@ public class greetedJdbcTest {
         }
 
     }
-
-
     @Test
     public void insertUsers( ) throws Exception {
         try {
-//            forName("org.h2.Driver");
             Connection conn = (DriverManager.getConnection(GREET_DATABASE_URL, "sa", ""));
             final String INSERT_USERS_SQL = "insert into users(user_name, greet_counter) values (?,?)";
             Statement statement = conn.createStatement();
@@ -107,7 +94,6 @@ public class greetedJdbcTest {
             ResultSet rs = statement.executeQuery("select * from users where user_name = 'AYA'");
 
             if (rs.next()) {
-                //Add rows in the tables
                 assertEquals("AYA", rs.getString("user_name"));
                 assertEquals(1, rs.getInt("greet_counter"));
             }
@@ -138,8 +124,6 @@ public class greetedJdbcTest {
                 } else if (greetCounter == 2) {
                     assertEquals(1, rs.getInt("greet_counter"));
                 }
-
-
             }
 
         } catch (Exception e) {
@@ -148,11 +132,9 @@ public class greetedJdbcTest {
     }
 
     @Test
-    //noinspection deprecation
     public void updateUsers( ) throws Exception {
 
         try {
-
             Connection conn = getConnection();
             FIND_COUNTER_SQL = "select * from users";
             final String UPDATE_USERS_NAME_GREET_COUNT = "update users set greet_counter = greet_counter where user_name = ?";
@@ -212,29 +194,52 @@ public class greetedJdbcTest {
     public void remove( ) throws SQLException {
         try {
             try(Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "")) {
-                // delete names in database!!!
+                ResultSet rs;
+                // clear greeted names in database!!!
                 Statement statement = conn.createStatement();
                 statement.addBatch("delete from users where user_name in ('YASH', 'ZEE')");
                 statement.executeBatch();
 
+                PreparedStatement ps = conn.prepareStatement("select * from users where user_name = ?");
 
+
+                ps.setString(1,"{YASH}");
+                rs = ps.executeQuery();
+
+                assertEquals("YASH", rs.getString("user_name"));
+                assertEquals(1,rs.getInt("greet_counter"));
             }
         } catch(Exception ex) {
             System.out.println("These test will fail until the users table is created: " + ex);
         }
     }
-    @Test
 
+    @Test
+    public void reset(){
+        try{
+            try(Connection conn = DriverManager.getConnection(GREET_DATABASE_URL,"sa", "")){
+                ResultSet rs;
+                //Reset greeted names in a database
+                Statement statement = conn.createStatement();
+                conn.createStatement().execute("delete from users where user_name in ('ZEE','YASH')");
+
+                assertEquals("{}","{}",("user_name"));
+
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @Test
     public void help()throws Exception{
 
         try {
             Connection conn = DriverManager.getConnection(GREET_DATABASE_URL,"sa","");
             Statement statement = conn.createStatement();
-//            ResultSet rs = null;
 
-//            if (rs.next()) {
             System.out.println("Should Display the information about the App");
-//            }
         }
         catch (Exception e){
             e.printStackTrace();

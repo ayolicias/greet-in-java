@@ -21,16 +21,8 @@ public class Greeted implements GreetedUser {
             int greetCounter = greetMap.get(userName);
             greetCounter++;
             greetMap.put(userName, greetCounter);
-
         }
-
     }
-//
-//    @Override
-//    public int totalGreeted( String userName ) {
-//        return 0;
-//    }
-
 
     @Override
     public int totalGreeted() {
@@ -54,11 +46,6 @@ public class Greeted implements GreetedUser {
 
     @Override
     public Map< String, Integer > findUsers() throws Exception {
-//        if ((userName.isEmpty() == true)) {
-//            System.out.println ( "no users have been greeted" );
-//        } else {
-//            System.out.println (userName );
-//        }
         return null;
     }
 
@@ -76,7 +63,6 @@ public class Greeted implements GreetedUser {
         return userName + " is not in the list";
 
     }
-
 
     public int greetMap() {
         return greetMap.size();
