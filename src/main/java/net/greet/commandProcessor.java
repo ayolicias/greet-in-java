@@ -1,43 +1,26 @@
 package net.greet;
 
-import org.h2.command.Command;
+import java.sql.SQLException;
 
-import java.util.Scanner;
+public class CommandProcessor {
 
-public class commandProcessor{
+    Greet greeter;
 
-
-    private static Greet greet;
-//    Greet greet;
-
-    public commandProcessor( Greet greet){
-        commandProcessor.greet = greet;
+    public CommandProcessor(Greet greet) {
+        this.greeter = greet;
     }
 
-    public static void main( String[] args ) throws Exception {
+    public String execute(CommandExtractor commandExtractor) throws SQLException {
 
-        String getnames;
-        String getlanguage;
+        if ("greet".equalsIgnoreCase(commandExtractor.command())) {
 
-//        GreetedUser greeter = new Greeted();
-        GreetedUser greeter = new JdbcGreeted();
+            greeter.name(commandExtractor.getName());
 
-        Scanner scanner = new Scanner(System.in);
-
-
-//        while (greet) {
-            System.out.println("Enter command");
-
-            String input = scanner.nextLine();
-
-            String[] command = input.split("");
-            if (input.equals("greet")) {
-
-//                return greeter.greetUser(getnames, getlanguage);
-
-
-            }
-
-            }
+            System.out.printf(commandExtractor.getGreet());
+            return commandExtractor.getGreet();
+        }
+        return null;
+    }
+}
 
 }

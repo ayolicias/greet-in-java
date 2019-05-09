@@ -1,36 +1,45 @@
 package net.greet;
 
-import java.util.Scanner;
-import java.util.Scanner;
-
-public class CommandExecutor {
+public class CommandExtractor {
     private String name;
     private String language;
     private String command;
 
-    public static void main( String[] args ) throws Exception {
+    //String[]input;
+    public CommandExtractor(String command, String name, String language){
+        this.name = name;
+        this.language = language;
 
-        GreetedUser greeter = new JdbcGreeted();
-        Scanner scanner = new Scanner(System.in);
+        String[]input = command.split(" ");
+        this.command = input[0];
+        this.command = input[1];
+        this.command = input[2];
+    }
+//public String getCommand(){
+//    return command;
+//}
 
-        String[] command;
-        command = command.split("");
-        
-        public String getcommand() {
-            String[] greet;
-
-            getcommand = greet[0];
-            getcommand = name[0];
-            getcommand = command[0];
-
-
+    public String getName() {
+        return name;
+    }
 
 
+    public String getLanguage() {
+        return language;
+    }
 
-        }
-        public String getCommand(){
-            return command;
-        }
+    public String getcommand() {
+
+        return command();
+    }
+
+    public String command() {
+        return command;
+    }
+
+    public String getGreet() {
+
+        return "getName(), getLanguage()";
     }
 }
 
