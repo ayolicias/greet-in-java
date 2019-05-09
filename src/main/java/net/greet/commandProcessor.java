@@ -2,17 +2,42 @@ package net.greet;
 
 import org.h2.command.Command;
 
+import java.util.Scanner;
+
 public class commandProcessor{
-    public String Name;
-    public String Language;
-    public final Command command;
 
-    public commandProcessor( Command command){
-        this.command = command;
+
+    private static Greet greet;
+//    Greet greet;
+
+    public commandProcessor( Greet greet){
+        commandProcessor.greet = greet;
     }
 
+    public static void main( String[] args ) throws Exception {
 
-    public void greetUser( String userName, String language ) {
+        String getnames;
+        String getlanguage;
 
-    }
+//        GreetedUser greeter = new Greeted();
+        GreetedUser greeter = new JdbcGreeted();
+
+        Scanner scanner = new Scanner(System.in);
+
+
+//        while (greet) {
+            System.out.println("Enter command");
+
+            String input = scanner.nextLine();
+
+            String[] command = input.split("");
+            if (input.equals("greet")) {
+
+//                return greeter.greetUser(getnames, getlanguage);
+
+
+            }
+
+            }
+
 }
