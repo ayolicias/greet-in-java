@@ -29,7 +29,7 @@ class CommandExtractorTest {
         CommandExtractor commandExtractor = new CommandExtractor("greet");
 
         assertEquals("greet", commandExtractor.getCommand());
-        assertEquals("", commandExtractor.getName());
+        assertEquals("YASH", commandExtractor.getName());
         assertEquals("Tswana", commandExtractor.getLanguage());
     }
 
@@ -39,7 +39,7 @@ class CommandExtractorTest {
 
         assertEquals("greeted", commandExtractor.getCommand());
         assertEquals("YASH", commandExtractor.getName());
-        assertEquals("Tswana", commandExtractor.getLanguage());
+        assertEquals("", commandExtractor.getLanguage());
     }
 
     @Test
