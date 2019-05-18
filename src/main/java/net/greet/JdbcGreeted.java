@@ -112,8 +112,8 @@ public class JdbcGreeted implements GreetedUser {
     }
 
     @Override
-    public String totalGreeted( ) throws Exception {
-        return String.valueOf(findUsers().size());
+    public int totalGreeted( ) throws Exception {
+        return findUsers().size();
     }
 
     @Override
@@ -124,7 +124,7 @@ public class JdbcGreeted implements GreetedUser {
         catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return "";
     }
 
     @Override

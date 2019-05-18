@@ -8,7 +8,7 @@ public interface GreetedUser {
     String reset();
     String greeted() throws Exception;
     Map< String, Integer > findUsers() throws Exception;
-    String totalGreeted( ) throws Exception;
+    int totalGreeted( ) throws Exception;
     String help();
     String exit();
     String greetedUser( String userName ) throws Exception;

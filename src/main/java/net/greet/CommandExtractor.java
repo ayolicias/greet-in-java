@@ -41,31 +41,3 @@ public class CommandExtractor {
 
 
 
-//        if (language == "Tswana") {
-//            Languages.valueOf(language).getGreets(language);
-//
-//            System.out.println(Languages.valueOf(language).getGreets(input[1]));
-//
-//        }
-//        else if (input[0].equals("greeted")) ;
-//
-//        if (name.isEmpty()) {
-//            Languages.valueOf(name).getGreets(language);
-//
-//            System.out.println(Languages.valueOf(name).getGreets(language));
-//        } else if (input[0].equals("greeted")) {
-//
-//            if (name == "YASH") {
-//                System.out.println(Languages.valueOf(name).getGreets(language));
-//            }
-//            else if (input[0].equals("greeted")) {
-//            }
-//
-//        }
-//    }
-
-
-
-
-
-

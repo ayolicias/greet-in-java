@@ -21,15 +21,21 @@ public class CommandProcessor {
                 String language = "TSWANA";
                 Languages.valueOf(language).getGreets(commandExtractor.getLanguage());
 
-                System.out.println(Languages.valueOf(language).getGreets(commandExtractor.getName()));
-                greeter.greetUser(commandExtractor.getLanguage(), commandExtractor.getLanguage());
+                System.out.println(Languages.valueOf(language).getGreets(commandExtractor.getLanguage()));
+                greeter.greetUser(commandExtractor.getName(), commandExtractor.getLanguage());
             }
 
-        } else if (commandExtractor.getCommand().equals("greeted")) {
+        }
+        else if (commandExtractor.getCommand().equals("greeted")) {
+            System.out.println("greeted");
+
             try {
                 if (!commandExtractor.getName().isEmpty()) {
                     System.out.println(greeter.greetedUser(commandExtractor.getName()));
-                } else {
+                    System.out.println(greeter.greeted());
+
+                }
+                else {
                     System.out.println(greeter.greeted());
                 }
             } catch (Exception ex) {

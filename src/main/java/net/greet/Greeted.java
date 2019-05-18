@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Greeted implements GreetedUser {
 
-    public String greeted;
+//    public String greeted;
 
     Map< String, Integer > greetMap = new HashMap< String, Integer >();
     private int greetCounter = 1;
@@ -22,12 +22,12 @@ public class Greeted implements GreetedUser {
             greetCounter++;
             greetMap.put(userName, greetCounter);
         }
-        return userName;
+        return greetUser(userName, language);
     }
 
     @Override
-    public String totalGreeted() {
-        return String.valueOf(greetMap.size());
+    public int totalGreeted() {
+        return greetMap.size();
     }
 
 
@@ -36,7 +36,7 @@ public class Greeted implements GreetedUser {
         System.out.println("reset names");
         greetMap.clear();
 
-        return reset();
+        return " ";
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Greeted implements GreetedUser {
 
     @Override
     public Map< String, Integer > findUsers() throws Exception {
-        return null;
+        return findUsers();
     }
 
 
@@ -66,10 +66,6 @@ public class Greeted implements GreetedUser {
 
     }
 
-    public int greetMap() {
-        return greetMap.size();
-    }
-
     @Override
     public String help() {
     System.out.println("greet followed by the name and the language the user is to be greeted in a specific language, \n");
@@ -81,7 +77,7 @@ public class Greeted implements GreetedUser {
     System.out.println("clear followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n");
     System.out.println("exit exits the application,\n");
     System.out.println("help shows a user an overview of all possible commands.\n");
-        return help();
+    return help();
     }
 
     @Override
