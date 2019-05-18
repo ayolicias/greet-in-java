@@ -4,27 +4,56 @@ import java.sql.SQLException;
 
 public class CommandProcessor {
 
-    Greet greeter;
+    JdbcGreeted greeter = new JdbcGreeted();
 
     private String language;
     private String name;
 
-    public String execute(CommandExtractor commandExtractor) throws SQLException {
+    public String execute( CommandExtractor commandExtractor ) throws SQLException {
+        if (commandExtractor.getCommand().equals("greet")) {
+            try {
+                String language = commandExtractor.getLanguage().toLowerCase();
+                Languages.valueOf(language).getGreets(commandExtractor.getLanguage());
+                System.out.println(Languages.valueOf(language).getGreets(commandExtractor.getName()));
+                greeter.greetUser(commandExtractor.getLanguage(), commandExtractor.getLanguage());
 
-        if ("greet".equals(commandExtractor.getName())) {
-            if (language == "TSWANA")
-                Languages.valueOf(language).getGreets(name);
+            } catch (ArrayIndexOutOfBoundsException e) {
+                String language = "TSWANA";
+                Languages.valueOf(language).getGreets(commandExtractor.getLanguage());
 
-            System.out.println(Languages.valueOf(language).getGreets(name));
-            greeter.equals(name);
-        }
-        else if (language == ""){
-             System.out.println(Languages.valueOf(language).getGreets(name));
+                System.out.println(Languages.valueOf(language).getGreets(commandExtractor.getName()));
+                greeter.greetUser(commandExtractor.getLanguage(), commandExtractor.getLanguage());
+            }
 
-        }
+        } else if (commandExtractor.getCommand().equals("greeted")) {
+            try {
+                if (!commandExtractor.getName().isEmpty()) {
+                    System.out.println(greeter.greetedUser(commandExtractor.getName()));
+                } else {
+                    System.out.println(greeter.greeted());
+                }
+            } catch (Exception ex) {
+                System.out.println("invalid Command");
+            }
+        } else if (commandExtractor.getCommand().equals("reset")) {
+            greeter.reset();
 
-        return execute(commandExtractor);
+        } else if (commandExtractor.getCommand().equals("clear")) {
+            greeter.remove(commandExtractor.getName());
+
+        } else if (commandExtractor.getCommand().equals("help")) {
+            greeter.help();
+
+        } else if (commandExtractor.getCommand().equals("exit")) {
+            greeter.exit();
+        } else System.out.println("invalid");
+        return "";
+        //return execute(commandExtractor);
     }
+
 }
+
+
+
 
 

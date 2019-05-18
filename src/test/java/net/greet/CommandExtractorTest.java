@@ -26,11 +26,11 @@ class CommandExtractorTest {
 
     @Test
     void shouldGetGreetCommands_3( ) {
-        CommandExtractor commandExtractor = new CommandExtractor("greet");
+        CommandExtractor commandExtractor = new CommandExtractor("greet YASH");
 
         assertEquals("greet", commandExtractor.getCommand());
         assertEquals("YASH", commandExtractor.getName());
-        assertEquals("Tswana", commandExtractor.getLanguage());
+        assertEquals(" ", commandExtractor.getLanguage());
     }
 
     @Test
@@ -64,7 +64,7 @@ class CommandExtractorTest {
         CommandExtractor commandExtractor = new CommandExtractor("clear");
 
         assertEquals("clear", commandExtractor.getCommand());
-        assertEquals("", commandExtractor.getName());
+        assertEquals(" ", commandExtractor.getName());
 
     }
 }

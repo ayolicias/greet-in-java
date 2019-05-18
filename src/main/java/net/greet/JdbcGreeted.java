@@ -65,7 +65,7 @@ public class JdbcGreeted implements GreetedUser {
     }
 
     @Override
-    public void greetUser( String userName, String language ) {
+    public String greetUser( String userName, String language ) {
         Map< String, Integer > greetMap = new HashMap< String, Integer >();
         try {
             psfindCounter.setString(1, userName);
@@ -86,6 +86,7 @@ public class JdbcGreeted implements GreetedUser {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return userName;
     }
 
     @Override
@@ -111,18 +112,19 @@ public class JdbcGreeted implements GreetedUser {
     }
 
     @Override
-    public int totalGreeted( ) throws Exception {
-        return findUsers().size();
+    public String totalGreeted( ) throws Exception {
+        return String.valueOf(findUsers().size());
     }
 
     @Override
-    public void reset() {
+    public String reset() {
         try {
             psdeleteAll.execute();
         }
         catch (Exception e){
             e.printStackTrace();
         }
+        return null;
     }
 
     @Override
@@ -145,7 +147,7 @@ public class JdbcGreeted implements GreetedUser {
         return userName;
     }
     @Override
-    public void help() {
+    public String help() {
         System.out.println("greet followed by the name and the language the user is to be greeted in a specific language, \n");
         System.out.println("greet followed by the name the user is to be greeted in a Default Language,\n");
         System.out.println("greeted should display a list of all users that has been greeted and how many time each user has been greeted,");
@@ -155,10 +157,11 @@ public class JdbcGreeted implements GreetedUser {
         System.out.println("clear followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n");
         System.out.println("exit exits the application,\n");
         System.out.println("help shows a user an overview of all possible commands.\n");
+        return " ";
     }
 
     @Override
-    public void exit( ) {
+    public String exit( ) {
         try {
 
             System.exit(0);
@@ -169,6 +172,7 @@ public class JdbcGreeted implements GreetedUser {
             e.printStackTrace();
         }
 
+        return exit();
     }
 }
 

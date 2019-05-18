@@ -12,7 +12,7 @@ public class Greeted implements GreetedUser {
     private int greetCounter = 1;
 
     @Override
-    public void greetUser( String userName, String language ) {
+    public String greetUser( String userName, String language ) {
 
         if (!greetMap.containsKey(userName)) {
             greetMap.put(userName, greetCounter);
@@ -22,19 +22,21 @@ public class Greeted implements GreetedUser {
             greetCounter++;
             greetMap.put(userName, greetCounter);
         }
+        return userName;
     }
 
     @Override
-    public int totalGreeted() {
-        return greetMap.size();
+    public String totalGreeted() {
+        return String.valueOf(greetMap.size());
     }
 
 
     @Override
-    public void reset( ) {
+    public String reset( ) {
         System.out.println("reset names");
         greetMap.clear();
 
+        return reset();
     }
 
     @Override
@@ -69,7 +71,7 @@ public class Greeted implements GreetedUser {
     }
 
     @Override
-    public void help() {
+    public String help() {
     System.out.println("greet followed by the name and the language the user is to be greeted in a specific language, \n");
     System.out.println("greet followed by the name the user is to be greeted in a Default Language,\n");
     System.out.println("greeted should display a list of all users that has been greeted and how many time each user has been greeted,");
@@ -79,11 +81,13 @@ public class Greeted implements GreetedUser {
     System.out.println("clear followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n");
     System.out.println("exit exits the application,\n");
     System.out.println("help shows a user an overview of all possible commands.\n");
+        return help();
     }
 
     @Override
-    public void exit() {
+    public String exit() {
         System.exit(0);
+        return exit();
     }
 
     @Override
