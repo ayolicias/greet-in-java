@@ -102,7 +102,8 @@ public class JdbcGreeted implements GreetedUser {
         ResultSet rs = preparedStatement.executeQuery ( );
 
         while ( rs.next ( ) ) {
-           String name = rs.getString("user_name");
+           String name;
+            name = rs.getString("user_name");
             int counter = rs.getInt("greet_counter");
             greetMap.put(name, counter);
 
@@ -112,8 +113,8 @@ public class JdbcGreeted implements GreetedUser {
     }
 
     @Override
-    public int totalGreeted( ) throws Exception {
-        return findUsers().size();
+    public String totalGreeted( ) throws Exception {
+        return String.valueOf(findUsers().size());
     }
 
     @Override

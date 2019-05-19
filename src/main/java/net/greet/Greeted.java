@@ -26,8 +26,8 @@ public class Greeted implements GreetedUser {
     }
 
     @Override
-    public int totalGreeted() {
-        return greetMap.size();
+    public String totalGreeted() {
+        return "";
     }
 
 

@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Greet {
-    public String Name;
-    public String Language;
+//    public String Name;
+//    public String Language;
 
     public static void main( String[] args ) throws Exception {
 
