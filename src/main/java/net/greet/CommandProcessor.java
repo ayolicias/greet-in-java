@@ -15,14 +15,14 @@ public class CommandProcessor {
                 String language = commandExtractor.getLanguage().toLowerCase();
                 Languages.valueOf(language).getGreets(commandExtractor.getLanguage());
                 System.out.println(Languages.valueOf(language).getGreets(commandExtractor.getName()));
-                greeter.greetUser(commandExtractor.getName(), commandExtractor.getName());
+                greeter.greetUser(commandExtractor.getName(),commandExtractor.getName());
 
             } catch (ArrayIndexOutOfBoundsException e) {
                 String language = "TSWANA";
                 Languages.valueOf(language).getGreets(commandExtractor.getLanguage());
 
                 System.out.println(Languages.valueOf(language).getGreets(commandExtractor.getLanguage()));
-                greeter.greetUser(commandExtractor.getName(), commandExtractor.getLanguage());
+                greeter.greetUser(commandExtractor.getName(), commandExtractor.getName());
             }
 
         }
@@ -31,17 +31,17 @@ public class CommandProcessor {
 
             try {
                 if (!commandExtractor.getName().isEmpty()) {
-                    System.out.println(greeter.greetedUser(commandExtractor.getName()));
+                    System.out.println(greeter.greetedUser(commandExtractor.getLanguage()));
                     System.out.println(greeter.greeted());
 
                 }
                 else {
-                    System.out.println(greeter.greeted());
+//                    System.out.println(greeter.greeted());
                 }
             } catch (Exception ex) {
                 System.out.println(greeter.greeted());
 
-//                System.out.println("invalid Command");
+                System.out.println("invalid Command");
             }
         } else if (commandExtractor.getCommand().equals("reset")) {
             greeter.reset();

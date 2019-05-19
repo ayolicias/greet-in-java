@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CommandExtractorTest {
 
     @Test
-    void shouldGetGreetCommands_1( ) {
+    void shouldGetGreetCommandsWithLanguage( ) {
         CommandExtractor commandExtractor = new CommandExtractor("greet YASH English");
 
         assertEquals("greet", commandExtractor.getCommand());
@@ -15,14 +15,14 @@ class CommandExtractorTest {
         assertEquals("English", commandExtractor.getLanguage());
     }
 
-    @Test
-    void shouldGetGreetCommands_2( ) {
-        CommandExtractor commandExtractor = new CommandExtractor("greet YASH ");
-
-        assertEquals("greet", commandExtractor.getCommand());
-        assertEquals("YASH", commandExtractor.getName());
-//        assertEquals("Tswana", commandExtractor.getLanguage());
-    }
+//    @Test
+//    void shouldGetGreetCommandsWithDefaultLang( ) {
+//        CommandExtractor commandExtractor = new CommandExtractor("greet YASH ");
+//
+//        assertEquals("greet", commandExtractor.getCommand());
+//        assertEquals("YASH", commandExtractor.getName());
+//        assertEquals(" ", commandExtractor.getLanguage());
+//    }
 
     @Test
     void shouldGetGreetCommands_3( ) {
@@ -33,22 +33,22 @@ class CommandExtractorTest {
         assertEquals("tswana", commandExtractor.getLanguage());
     }
 
+//    @Test
+//    void shouldGetGreetedCommandsWithDefaultLang( ) {
+//        CommandExtractor commandExtractor = new CommandExtractor("greeted {YASH}");
+//        assertEquals("greeted", commandExtractor.getCommand());
+//        assertEquals("{YASH=1}", commandExtractor.getName());
+////        assertEquals("TSWANA", commandExtractor.getLanguage());
+//    }
+
     @Test
-    void shouldGetGreetedCommands_1( ) {
-        CommandExtractor commandExtractor = new CommandExtractor("greeted YASH");
+    void shouldGetGreetedCommandsWithCount( ) {
+        CommandExtractor commandExtractor = new CommandExtractor("greeted {ziya=1}");
+
 
         assertEquals("greeted", commandExtractor.getCommand());
-        assertEquals("YASH", commandExtractor.getName());
-        assertEquals("", commandExtractor.getLanguage());
-    }
+        assertEquals("{ziya=1}", commandExtractor.getName());
 
-    @Test
-    void shouldGetGreetedCommands_2( ) {
-        CommandExtractor commandExtractor = new CommandExtractor("greeted");
-
-        assertEquals("greeted", commandExtractor.getCommand());
-        assertEquals("", commandExtractor.getName());
-        assertEquals("", commandExtractor.getLanguage());
     }
 
     @Test
@@ -60,11 +60,10 @@ class CommandExtractorTest {
     }
 
     @Test
-    void shouldGetClearCommandAndName( ) {
-        CommandExtractor commandExtractor = new CommandExtractor("reset");
+    void shouldGetResetCommandAndName( ) {
+        CommandExtractor commandExtractor = new CommandExtractor("clear");
 
-        assertEquals("reset", commandExtractor.getCommand());
-        assertEquals(" ", commandExtractor.getName());
+        assertEquals("clear", commandExtractor.getCommand());
 
     }
 }
