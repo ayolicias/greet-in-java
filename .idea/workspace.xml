@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6853ed2d-8c44-45ce-a092-fd60b695f0c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/CommandExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/CommandExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/greet/CommandProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/greet/CommandProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/net/greet/CommandExtractorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/net/greet/CommandExtractorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/greetings_db.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/greetings_db.mv.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/net/greet/CommandExtractorTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/net/greet/CommandExtractorTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -169,6 +164,7 @@
         <option value="$PROJECT_DIR$/src/main/java/net/greet/CommandProcessor.java" />
         <option value="$PROJECT_DIR$/src/main/java/net/greet/CommandExtractor.java" />
         <option value="$PROJECT_DIR$/src/test/java/net/greet/CommandExtractorTest.java" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -365,7 +361,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558343467180" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558343687341" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -539,18 +535,18 @@
       <window_info id="UI Designer" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Image Layers" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.49837133" visible="true" weight="0.28484848" />
+      <window_info content_ui="combo" id="Project" order="4" sideWeight="0.49837133" visible="true" weight="0.28484848" />
       <window_info id="Favorites" order="5" sideWeight="0.50162864" side_tool="true" weight="0.32960895" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="7" weight="0.32960895" />
       <window_info id="Project Explorer" order="8" weight="0.121308856" />
       <window_info id="Job Explorer" order="9" sideWeight="0.49837133" weight="0.32960895" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.28175896" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.44147158" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.5022727" side_tool="true" weight="0.3411371" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32943144" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.5568562" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49772727" visible="true" weight="0.17892976" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.49772727" visible="true" weight="0.21906355" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.29478827" />
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
