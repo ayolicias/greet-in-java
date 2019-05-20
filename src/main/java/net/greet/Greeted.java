@@ -29,6 +29,10 @@ public class Greeted implements GreetedUser {
                 return Languages.valueOf(language).getGreets() + " " + userName;
             case tswana:
                 return Languages.valueOf(language).getGreets() + " " + userName;
+            case isixhosa:
+                return Languages.valueOf(language).getGreets()+ " " + userName;
+            case afrikaans:
+                return Languages.valueOf(language).getGreets()+ " " + userName;
         }
 
         return language;
