@@ -6,10 +6,10 @@ package net.greet;
 
 public enum Languages {
 
-    english ("hello"),
-    isixhosa ("molo"),
-    tswana("dumela"),
-    afrikaans("geomore");
+    english ("hello "),
+    isixhosa ("molo "),
+    tswana("dumela "),
+    afrikaans("geomore ");
 
     private  final String greets;
 
