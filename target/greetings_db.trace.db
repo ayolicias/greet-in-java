@@ -1,2 +1,4 @@
 2019-05-20 15:03:02 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-199]
+2019-05-20 15:12:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: No data is available [2000-199]
