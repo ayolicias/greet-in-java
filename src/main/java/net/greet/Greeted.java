@@ -22,7 +22,16 @@ public class Greeted implements GreetedUser {
             greetCounter++;
             greetMap.put(userName, greetCounter);
         }
-        return greetUser(userName, language);
+
+
+        switch (Languages.valueOf(language)){
+            case english:
+                return Languages.valueOf(language).getGreets() + " " + userName;
+            case tswana:
+                return Languages.valueOf(language).getGreets() + " " + userName;
+        }
+
+        return language;
     }
 
     @Override
