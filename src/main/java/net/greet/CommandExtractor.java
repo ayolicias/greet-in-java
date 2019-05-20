@@ -16,6 +16,7 @@ public class CommandExtractor {
         if (input.length == 2) {
             this.command = input[0];
             this.name = input[1];
+            this.language = "tswana";
 
         }
         if (input.length == 1) {

@@ -15,31 +15,23 @@ class CommandExtractorTest {
         assertEquals("English", commandExtractor.getLanguage());
     }
 
-//    @Test
-//    void shouldGetGreetCommandsWithDefaultLang( ) {
-//        CommandExtractor commandExtractor = new CommandExtractor("greet YASH ");
-//
-//        assertEquals("greet", commandExtractor.getCommand());
-//        assertEquals("YASH", commandExtractor.getName());
-//        assertEquals(" ", commandExtractor.getLanguage());
-//    }
-
     @Test
-    void shouldGetGreetCommands_3( ) {
-        CommandExtractor commandExtractor = new CommandExtractor("greet YASH tswana");
+    void shouldGetGreetCommandsWithDefaultLang( ) {
+        CommandExtractor commandExtractor = new CommandExtractor("greet YASH ");
 
         assertEquals("greet", commandExtractor.getCommand());
         assertEquals("YASH", commandExtractor.getName());
         assertEquals("tswana", commandExtractor.getLanguage());
     }
 
-//    @Test
-//    void shouldGetGreetedCommandsWithDefaultLang( ) {
-//        CommandExtractor commandExtractor = new CommandExtractor("greeted {YASH}");
-//        assertEquals("greeted", commandExtractor.getCommand());
-//        assertEquals("{YASH=1}", commandExtractor.getName());
-////        assertEquals("TSWANA", commandExtractor.getLanguage());
-//    }
+    @Test
+    void shouldGetGreetCommandsWithDefault( ) {
+        CommandExtractor commandExtractor = new CommandExtractor("greet YASH TSWANA");
+
+        assertEquals("greet", commandExtractor.getCommand());
+        assertEquals("YASH", commandExtractor.getName());
+        assertEquals("TSWANA", commandExtractor.getLanguage());
+    }
 
     @Test
     void shouldGetGreetedCommandsWithCount( ) {
