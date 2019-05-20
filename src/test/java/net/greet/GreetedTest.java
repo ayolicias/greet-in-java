@@ -12,11 +12,8 @@ class GreetedTest {
     public void shouldGreetAPerson(){
         Greeted greeted = new Greeted();
 
-//        greeted.greetUser("Yamkela", "Zulu");
         assertEquals("hello Yamkela", greeted.greetUser("Yamkela","english"));
 
-//        greeted.greetUser("Sipho", "English");
-//        assertEquals(greeted.totalGreeted(), 2);
     }
 
     @Test
