@@ -12,4 +12,5 @@ public interface GreetedUser {
     String help();
     String exit();
     String greetedUser( String userName ) throws Exception;
+
 }

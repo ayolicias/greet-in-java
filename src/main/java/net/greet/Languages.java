@@ -17,10 +17,6 @@ public enum Languages {
         this.greets = greets;
     }
 
-    public String getGreets( String userName ){
-        return greets + userName;
-    }
-
     public String getGreets( ) {
         return greets;
     }

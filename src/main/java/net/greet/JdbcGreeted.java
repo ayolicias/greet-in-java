@@ -9,7 +9,7 @@ public class JdbcGreeted implements GreetedUser {
 
     Map< String, Integer > greetMap = new HashMap< String, Integer >();
     final String GREET_DATABASE_URL = "jdbc:h2:./target/greetings_db";
-    public void loadJdbcclass( ) throws Exception{
+    public void loadJdbcclass( ){
 
         try {
             forName("org.h2.Driver");
@@ -83,37 +83,43 @@ public class JdbcGreeted implements GreetedUser {
                 psCreateNewinsertDB.execute();
             }
 
+            return Languages.valueOf(language).getGreets() + userName;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return userName;
+        return Languages.valueOf(language).getGreets() + userName;
     }
 
     @Override
-    public String greeted() throws Exception{
+    public String greeted() {
        return findUsers().toString();
     }
 
     @Override
-    public Map< String, Integer > findUsers() throws Exception {
-        Map< String, Integer > greetMap = new HashMap< String, Integer >();
+    public Map< String, Integer > findUsers()  {
+        try {
+            Map< String, Integer > greetMap = new HashMap< String, Integer >();
 
-        PreparedStatement preparedStatement = conn.prepareStatement ( "select * from users");
-        ResultSet rs = preparedStatement.executeQuery ( );
+            PreparedStatement preparedStatement = conn.prepareStatement("select * from users");
+            ResultSet rs = preparedStatement.executeQuery();
 
-        while ( rs.next ( ) ) {
-           String name;
-            name = rs.getString("user_name");
-            int counter = rs.getInt("greet_counter");
-            greetMap.put(name, counter);
+            while ( rs.next() ) {
+                String name;
+                name = rs.getString("user_name");
+                int counter = rs.getInt("greet_counter");
+                greetMap.put(name, counter);
 
+            }
+
+            return greetMap;
         }
-
-        return greetMap;
+        catch (Exception e){
+            return greetMap;
+        }
     }
 
     @Override
-    public String totalGreeted( ) throws Exception {
+    public String totalGreeted() {
         return String.valueOf(findUsers().size());
     }
 
@@ -125,11 +131,11 @@ public class JdbcGreeted implements GreetedUser {
         catch (Exception e){
             e.printStackTrace();
         }
-        return "";
+        return "All names deleted";
     }
 
     @Override
-    public String greetedUser( String userName ) throws Exception {
+    public String greetedUser( String userName ) {
         return userName + "  have been greeted: " + findUsers().get(userName);
     }
 
@@ -139,26 +145,25 @@ public class JdbcGreeted implements GreetedUser {
             psremove.setString(1,userName);
             psremove.execute();
 
-            System.out.println (userName + " has been deleted from database");
+            return (userName + " has been deleted from database");
         }
 
         catch (Exception e){
             e.printStackTrace();
         }
-        return userName;
+        return (userName + " has been deleted from database");
     }
     @Override
     public String help() {
-        System.out.println("greet followed by the name and the language the user is to be greeted in a specific language, \n");
-        System.out.println("greet followed by the name the user is to be greeted in a Default Language,\n");
-        System.out.println("greeted should display a list of all users that has been greeted and how many time each user has been greeted,");
-        System.out.println("\n" + "greeted followed by a username returns how many times that username have been greeted");
-        System.out.println("counter returns a count of how many unique users has been greeted,\n");
-        System.out.println("clear deletes of all users greeted and the reset the greet counter to 0,\n");
-        System.out.println("clear followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n");
-        System.out.println("exit exits the application,\n");
-        System.out.println("help shows a user an overview of all possible commands.\n");
-        return " ";
+      return "help shows a user an overview of all possible commands\n" +
+              "greet followed by the name and the language the user is to be greeted in a specific language, \n " +
+              "greet followed by the name the user is to be greeted in a Default Language,\n " +
+              "greeted should display a list of all users that has been greeted and how many time each user has been greeted\n " +
+              "greeted followed by a username returns how many times that username have been greeted\n " +
+              "counter returns a count of how many unique users has been greeted,\n " +
+              "clear deletes of all users greeted and the reset the greet counter to 0,\n " +
+              "clear followed by a username delete the greet counter for the specified user and decrement the greet counter by 1,\n " +
+              "exit exits the application,\n ";
     }
 
     @Override
@@ -166,7 +171,7 @@ public class JdbcGreeted implements GreetedUser {
         try {
 
             System.exit(0);
-            System.out.println("exits the application");
+            return  ("exits the application");
 
         }
         catch (Exception e){

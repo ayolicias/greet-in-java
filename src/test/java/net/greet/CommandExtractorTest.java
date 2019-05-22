@@ -37,10 +37,8 @@ class CommandExtractorTest {
     void shouldGetGreetedCommandsWithCount( ) {
         CommandExtractor commandExtractor = new CommandExtractor("greeted {ziya=1}");
 
-
         assertEquals("greeted", commandExtractor.getCommand());
         assertEquals("{ziya=1}", commandExtractor.getName());
-
     }
 
     @Test

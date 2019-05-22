@@ -6,55 +6,38 @@ public class CommandProcessor {
 
     JdbcGreeted greeter = new JdbcGreeted();
 
-//    private String language;
-//    private String name;
-
-    public String execute( CommandExtractor commandExtractor ) throws Exception {
+    public String execute( CommandExtractor commandExtractor ){
         if (commandExtractor.getCommand().equals("greet")) {
-            try {
-                String language = commandExtractor.getLanguage().toLowerCase();
-                Languages.valueOf(language).getGreets(commandExtractor.getLanguage());
-                System.out.println(Languages.valueOf(language).getGreets(commandExtractor.getName()));
-                greeter.greetUser(commandExtractor.getName(),commandExtractor.getName());
-
-            } catch (ArrayIndexOutOfBoundsException e) {
-                String language = "TSWANA";
-                Languages.valueOf(language).getGreets(commandExtractor.getLanguage());
-
-                System.out.println(Languages.valueOf(language).getGreets(commandExtractor.getLanguage()));
-                greeter.greetUser(commandExtractor.getName(), commandExtractor.getLanguage());
-            }
+            return greeter.greetUser(commandExtractor.getName(), commandExtractor.getLanguage());
 
         }
         else if (commandExtractor.getCommand().equals("greeted")) {
-            System.out.println("greeted");
-
-            try {
-                if (!commandExtractor.getName().isEmpty()) {
-                    System.out.println(greeter.greetedUser(commandExtractor.getLanguage()));
-                    System.out.println(greeter.greeted());
-                }
-                else {
-                    System.out.println(greeter.greeted());
-                }
-            } catch (Exception ex) {
-                System.out.println(greeter.greeted());
-                System.out.println("invalid Command");
+            if (commandExtractor.getName().equals("")) {
+                return greeter.greeted();
             }
-        } else if (commandExtractor.getCommand().equals("reset")) {
-            greeter.reset();
+            else{
+                return greeter.greetedUser(commandExtractor.getName());
+            }
 
         } else if (commandExtractor.getCommand().equals("clear")) {
-            greeter.remove(commandExtractor.getName());
+            if (commandExtractor.getName().equals("")) {
+                return greeter.reset();
+            }
+            else {
+                return greeter.remove(commandExtractor.getName());
+            }
 
         } else if (commandExtractor.getCommand().equals("help")) {
-            greeter.help();
+           return greeter.help();
 
-        } else if (commandExtractor.getCommand().equals("exit")) {
-            greeter.exit();
-        } else System.out.println("invalid");
-        return "";
-        //return execute(commandExtractor);
+        }
+        else if (commandExtractor.getCommand().equals("count")){
+            return greeter.totalGreeted();
+        }
+        else if (commandExtractor.getCommand().equals("exit")) {
+           return greeter.exit();
+        } else return ("invalid command");
+
     }
 
 }
