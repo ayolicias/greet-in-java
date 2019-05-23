@@ -8,7 +8,9 @@ public class Greet {
 
         Scanner scanner = new Scanner(System.in);
         String input = "";
-       CommandProcessor commandProcessor = new CommandProcessor();
+
+        GreetedUser greetedUser = new JdbcGreeted();
+        CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
 
         while (!input.equals("exit")) {
             System.out.println("Enter command");
