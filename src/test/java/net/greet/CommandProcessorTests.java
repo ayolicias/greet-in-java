@@ -23,15 +23,7 @@ public class CommandProcessorTests {
 
         assertEquals("hello lihle",commandProcessor.execute(commandExtractor));
     }
-//    @Test
-//    void ShouldCountGreetedUsers(){
-//    GreetedUser greetedUser = new JdbcGreeted();
-//
-//        CommandExtractor commandExtractor = new CommandExtractor("count");
-//        CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
-//
-//        assertEquals("1",commandProcessor.execute(commandExtractor));
-//    }
+
     @Test
     void ShouldRemoveUser(){
         GreetedUser greetedUser = new JdbcGreeted();
@@ -75,14 +67,4 @@ public class CommandProcessorTests {
 
         assertEquals("invalid command",commandProcessor.execute(commandExtractor));
     }
-//    @Test
-//    void ShouldExitApp(){
-//        GreetedUser greetedUser = new JdbcGreeted();
-//
-//        CommandExtractor commandExtractor = new CommandExtractor("exit");
-//        CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
-//
-//        assertEquals("exit application",commandProcessor.execute(commandExtractor));
-//
-//    }
 }

@@ -10,7 +10,6 @@ public class CommandProcessor {
         this.greetedUser = greetedUser;
     }
 
-
     public String execute( CommandExtractor commandExtractor ){
         if (commandExtractor.getCommand().equals("greet")) {
             return greeter.greetUser(commandExtractor.getName(), commandExtractor.getLanguage());

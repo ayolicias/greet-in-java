@@ -23,9 +23,6 @@ public class CommandExtractor {
             this.language = "tswana";
 
         }
-//        if (input.length == 1) {
-//            this.command = input[0];
-//        }
     }
     public String getName() {
         return this.name;

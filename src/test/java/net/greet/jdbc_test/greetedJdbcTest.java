@@ -4,10 +4,7 @@ import net.greet.JdbcGreeted;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
-
 import java.sql.*;
-
 import static java.lang.Class.forName;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -195,13 +192,11 @@ public class greetedJdbcTest {
         try {
             try(Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "")) {
                 ResultSet rs;
-                // clear greeted names in database!!!
                 Statement statement = conn.createStatement();
                 statement.addBatch("delete from users where user_name in ('YASH', 'ZEE')");
                 statement.executeBatch();
 
                 PreparedStatement ps = conn.prepareStatement("select * from users where user_name = ?");
-
 
                 ps.setString(1,"{YASH}");
                 rs = ps.executeQuery();
