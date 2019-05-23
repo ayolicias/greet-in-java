@@ -1,12 +1,8 @@
 package net.greet;
-
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GreetedTest {
-
     @Test
     public void shouldGreetAPerson(){
         Greeted greeted = new Greeted();
@@ -22,12 +18,9 @@ class GreetedTest {
         greeted.greetUser("Yamkela", "english");
         greeted.greetUser("Yamkela", "english");
         greeted.greetUser("Yamkela", "tswana");
-
         greeted.greetUser("zee", "english");
         greeted.greetUser("zee", "english");
-
         greeted.greetUser("Aya","isixhosa");
-
 
         assertEquals(greeted.greeted(),"{Yamkela=3, Aya=1, zee=2}");
     }

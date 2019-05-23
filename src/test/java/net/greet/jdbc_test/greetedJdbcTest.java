@@ -1,17 +1,11 @@
 package net.greet.jdbc_test;
-import net.greet.GreetedUser;
-import net.greet.JdbcGreeted;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import java.sql.*;
-import static java.lang.Class.forName;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-
 public class greetedJdbcTest {
-
     final String GREET_DATABASE_URL = "jdbc:h2:./target/greetings_db";
     private String FIND_COUNTER_SQL;
 
@@ -20,12 +14,10 @@ public class greetedJdbcTest {
         Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "");
         return conn;
     }
-
     @BeforeEach
     public void cleanUpTables( ) {
         try {
             try (Connection conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "")) {
-                // delete NAMES that the tests are adding
 
                 conn.createStatement().execute("delete from users where user_name in ('ZEE','YASH')");
             }
@@ -195,9 +187,7 @@ public class greetedJdbcTest {
                 Statement statement = conn.createStatement();
                 statement.addBatch("delete from users where user_name in ('YASH', 'ZEE')");
                 statement.executeBatch();
-
                 PreparedStatement ps = conn.prepareStatement("select * from users where user_name = ?");
-
                 ps.setString(1,"{YASH}");
                 rs = ps.executeQuery();
 
@@ -214,7 +204,6 @@ public class greetedJdbcTest {
         try{
             try(Connection conn = DriverManager.getConnection(GREET_DATABASE_URL,"sa", "")){
                 ResultSet rs;
-                //Reset greeted names in a database
                 Statement statement = conn.createStatement();
                 conn.createStatement().execute("delete from users where user_name in ('ZEE','YASH')");
 
@@ -229,7 +218,6 @@ public class greetedJdbcTest {
 
     @Test
     public void help()throws Exception{
-
         try {
             Connection conn = DriverManager.getConnection(GREET_DATABASE_URL,"sa","");
             Statement statement = conn.createStatement();

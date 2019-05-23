@@ -7,19 +7,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CommandProcessorTests {
-
     GreetedUser greetedUser = new JdbcGreeted();
-
     @BeforeEach
     void cleanUp() {
 
         greetedUser.reset();
     }
 
-
     @Test
     void ShouldGreetUserWithDefaultLang(){
-        //GreetedUser greetedUser = new JdbcGreeted();
         CommandExtractor commandExtractor= new CommandExtractor("greet Ziya");
         CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
 
@@ -27,7 +23,6 @@ public class CommandProcessorTests {
     }
     @Test
     void ShouldGreetWithLang(){
-        //GreetedUser greetedUser = new JdbcGreeted();
         CommandExtractor commandExtractor = new CommandExtractor("greet Lihle english");
         CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
 
@@ -36,8 +31,6 @@ public class CommandProcessorTests {
 
     @Test
     void ShouldRemoveUser(){
-        //GreetedUser greetedUser = new JdbcGreeted();
-
         CommandExtractor commandExtractor = new CommandExtractor("clear Ziya");
         CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
 
@@ -45,8 +38,6 @@ public class CommandProcessorTests {
     }
     @Test
     void ShouldClearUser(){
-        //GreetedUser greetedUser = new JdbcGreeted();
-
         CommandExtractor commandExtractor = new CommandExtractor("clear");
         CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
 
@@ -54,7 +45,6 @@ public class CommandProcessorTests {
     }
     @Test
     void ShouldReturnGreetedUser(){
-        //GreetedUser greetedUser = new JdbcGreeted();
         CommandExtractor commandExtractor = new CommandExtractor("greeted lihle");
         CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
 
@@ -62,7 +52,6 @@ public class CommandProcessorTests {
     }
     @Test
     void ShouldReturnGreetedUsers(){
-        //GreetedUser greetedUser = new JdbcGreeted();
         CommandExtractor commandExtractor = new CommandExtractor("greeted");
         CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
 
@@ -70,8 +59,6 @@ public class CommandProcessorTests {
     }
     @Test
     void ShouldReturnInvalid(){
-        //GreetedUser greetedUser = new JdbcGreeted();
-
         CommandExtractor commandExtractor = new CommandExtractor("invalid command");
         CommandProcessor commandProcessor = new CommandProcessor(greetedUser);
 
