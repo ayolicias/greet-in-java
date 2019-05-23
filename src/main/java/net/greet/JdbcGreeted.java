@@ -9,28 +9,10 @@ public class JdbcGreeted implements GreetedUser {
 
     Map< String, Integer > greetMap = new HashMap< String, Integer >();
     final String GREET_DATABASE_URL = "jdbc:h2:./target/greetings_db";
-    public void loadJdbcclass( ){
 
-        try {
-            forName("org.h2.Driver");
-        }
-        catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 
     Connection conn;
 
-    {
-        try {
-
-            conn = DriverManager.getConnection("jdbc:h2:./target/greetings_db", "sa", "");
-
-
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
 
     final String INSERT_USERS_SQL = "insert into users(user_name, greet_counter) values (?,?)";
 
@@ -50,8 +32,10 @@ public class JdbcGreeted implements GreetedUser {
     PreparedStatement psfindhelp;
 
 
-    public JdbcGreeted( ) {
+    public JdbcGreeted() {
         try {
+            conn = DriverManager.getConnection(GREET_DATABASE_URL, "sa", "");
+
             psCreateNewinsertDB = conn.prepareStatement(INSERT_USERS_SQL);
             psfindCounter = conn.prepareStatement(FIND_COUNTER_SQL);
             psupdateCounter = conn.prepareStatement(UPDATE_USERS_NAME_GREET_COUNT);
@@ -61,12 +45,13 @@ public class JdbcGreeted implements GreetedUser {
             psfindhelp = conn.prepareStatement(FIND_HELP_SQL);
         }
         catch (Exception e){
+            e.printStackTrace();
         }
     }
 
     @Override
     public String greetUser( String userName, String language ) {
-        String UserName = userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
+        String UserName = userName;
         Map< String, Integer > greetMap = new HashMap< String, Integer >();
         try {
             psfindCounter.setString(1, UserName);
