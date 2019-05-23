@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GreetedTest {
 
-
-
     @Test
     public void shouldGreetAPerson(){
         Greeted greeted = new Greeted();
