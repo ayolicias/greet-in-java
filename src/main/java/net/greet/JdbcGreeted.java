@@ -66,28 +66,30 @@ public class JdbcGreeted implements GreetedUser {
 
     @Override
     public String greetUser( String userName, String language ) {
+        String UserName = userName.substring(0, 1).toUpperCase() + userName.substring(1).toLowerCase();
         Map< String, Integer > greetMap = new HashMap< String, Integer >();
         try {
-            psfindCounter.setString(1, userName);
+            psfindCounter.setString(1, UserName);
 
             ResultSet rs = psfindCounter.executeQuery();
 
             if (rs.next()) {
 
-                psupdateCounter.setString(1, userName);
+                psupdateCounter.setString(1, UserName);
                 psupdateCounter.execute();
 
             } else {
-                psCreateNewinsertDB.setString(1, userName);
+                psCreateNewinsertDB.setString(1, UserName);
                 psCreateNewinsertDB.setInt(2, 1);
                 psCreateNewinsertDB.execute();
             }
 
-            return Languages.valueOf(language).getGreets() + userName;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            return Languages.valueOf(language).getGreets() + UserName;
+        } catch (SQLException | IllegalArgumentException ex) {
+
+            return "dumela " + UserName;
+
         }
-        return Languages.valueOf(language).getGreets() + userName;
     }
 
     @Override
@@ -171,14 +173,14 @@ public class JdbcGreeted implements GreetedUser {
         try {
 
             System.exit(0);
-            return  ("exits the application");
+            return "exits the application";
 
         }
         catch (Exception e){
             e.printStackTrace();
         }
 
-        return exit();
+        return "exits the application";
     }
 }
 

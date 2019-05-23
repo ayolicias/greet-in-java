@@ -9,8 +9,8 @@ public class CommandExtractor {
         String[] input = userInput.split(" ");
         this.command = input[0];
 
-        if (input.length >= 2) {
-            this.name = input[1];
+        if (input.length >= 2){
+            this.name = input[1].substring(0, 1).toUpperCase() + input[1].substring(1).toLowerCase();
         }
         else {
             this.name = "";
