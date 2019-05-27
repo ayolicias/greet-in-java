@@ -3,14 +3,13 @@ package net.greet;
 import java.sql.SQLException;
 
 public class CommandProcessor {
-    GreetedUser greetedUser;
-    JdbcGreeted greeter = new JdbcGreeted();
+    GreetedUser greeter;
 
     public CommandProcessor(GreetedUser greetedUser){
-        this.greetedUser = greetedUser;
+        this.greeter = greetedUser;
     }
 
-    public String execute( CommandExtractor commandExtractor ){
+    public String execute( CommandExtractor commandExtractor ) throws Exception {
         if (commandExtractor.getCommand().equals("greet")) {
             return greeter.greetUser(commandExtractor.getName(), commandExtractor.getLanguage());
 
